@@ -25,7 +25,7 @@ public:
 
 	inline friend ostream& operator<<(ostream& outputStream, const Hand& hand) {
 		for(auto card : hand.handQueue) {
-			outputStream << card*;
+			outputStream << *card;
 		}
 
 		return outputStream;
