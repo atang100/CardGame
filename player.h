@@ -16,7 +16,6 @@ protected:
 	int d_coins;
 	Hand* d_hand;
 
-
 public:
 	
 	Player(string& name);
