@@ -2,10 +2,13 @@
 #include <string>
 #include <iostream>
 
-#include "card.h";
+#include "gemstone.h";
+#include "cardFactory.h";
 
 using std::string;
 using std::vector;
+using std::ostream;
+
 
 class DiscardPile {
 
@@ -32,4 +35,4 @@ public:
 
 		return outputStream;
 	};
-}
+};
