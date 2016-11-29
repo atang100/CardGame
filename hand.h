@@ -1,11 +1,13 @@
 #include <queue>
 
+#include "gemstones.h"
+
 using std::queue;
 
 class Hand {
 
 private:
-	queue<Card *> handQueue;
+	queue<Card*> handQueue;
 
 public:
 	//Constructor
@@ -23,11 +25,15 @@ public:
 	//Returns and removes card at index
 	Card* operator[](int);
 
-	inline friend ostream& operator<<(ostream& outputStream, const Hand& hand) {
-		for(auto card : hand.handQueue) {
+	inline friend std::ostream& operator<<(std::ostream& outputStream, Hand& hand) {
+		int queueSize = hand.handQueue.size();
+		for(int i=0; i=queueSize; i++) {
+			Card* card = hand.handQueue.front();
+			hand.handQueue.pop();
 			outputStream << *card;
+			hand.handQueue.push(card);
 		}
 
 		return outputStream;
 	};
-}
+};

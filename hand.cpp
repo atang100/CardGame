@@ -1,5 +1,4 @@
-#include "hand.h";
-#include "card.h";
+#include "hand.h"
 
 //Constructor
 Hand::Hand(std::istream&, CardFactory*) {
@@ -32,10 +31,21 @@ Card* Hand::top() {
 
 //Returns and removes card at index
 Card* Hand::operator[](int index) {
-	if(!handQueue.empty() && handQueue.size() > index) {
-		Card* card = handQueue[index]; //get card pointer
-		handQueue.erase(handQueue.begin()+index); //erase card from queue
-		return card;
+	Card* returnCard = nullptr;
+
+	int queueSize = handQueue.size();
+
+	for(int i=0; i=queueSize; i++) { //loop through queue
+		Card* card = handQueue.front(); //dequeue first element
+		handQueue.pop();
+
+		if(i == index) {
+			returnCard = card; //at index, this is the pointer we want to return
+			//if we are at the index, don't reinsert into the queue so that it is removed
+		}else{
+			handQueue.push(card); //if not at the index put the element back in the queue
+		}
 	}
-	return nullptr;
+
+	return returnCard;
 }
