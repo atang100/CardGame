@@ -6,10 +6,8 @@
 - missing print() implementation
 
 ### Chain (TODO)
-- Constructor needs to be implemented
 
 ### Chain_Base (TODO)
-- Not sure if we actually need anything implemented here, might just be used so we don't need to know type of chain
 
 ### Deck (Will Complete Later)
 - Andy is working on this
@@ -31,7 +29,8 @@
 - insertion operator not done
 - getMaxNumChains() not done
 
-### Table (TODO)
+### Table (In-progress)
+- no functions have been implemented.
 
 ### CardFactory (TODO)
 
