@@ -7,7 +7,6 @@
 
 using std::string;
 using std::vector;
-using std::ostream;
 
 #ifndef DISCARD_PILE_H
 #define DISCARD_PILE_H
@@ -27,13 +26,13 @@ public:
 	Card* pickUp();
 
 	//Return the top card off of the DiscardPile (don't remove)
-	Card* top();
+	Card* top() const;
 
 	//Dump all cards in the discard pile to the ostream
 	void print(std::ostream&);
 
-	inline friend ostream& operator<<(ostream& outputStream, const DiscardPile& hand) {
-		outputStream << *hand.top();
+	inline friend std::ostream& operator<<(std::ostream& outputStream, const DiscardPile& discardPile) {
+		outputStream << *discardPile.top();
 
 		return outputStream;
 	};

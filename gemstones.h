@@ -13,14 +13,19 @@ class Card {
 
 public:
 	// get how many cards necessary to receive "x" amount of coins.
-	virtual int getCardsPerCoin(int coins);
+	virtual int getCardsPerCoin(int coins) = 0;
 
 	// returns full name of card.
-	virtual string getName();
+	virtual string getName() = 0;
 
-	virtual void print(std::ostream& out);
+	virtual void print(std::ostream& out) const = 0;
 };
 
+
+inline std::ostream& operator<<(std::ostream& out, const Card& card) {
+	card.print(out);
+	return out;
+}
 
 
 class Quartz : public Card {
@@ -35,7 +40,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Hematite : public Card {
@@ -50,7 +55,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Obsidian : public Card {
@@ -65,7 +70,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Malachite : public Card {
@@ -80,7 +85,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Turquoise : public Card {
@@ -95,7 +100,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Ruby : public Card {
@@ -110,7 +115,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Amethyst : public Card {
@@ -125,7 +130,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 class Emerald : public Card {
@@ -140,7 +145,7 @@ public:
 	// returns full name of card.
 	string getName();
 
-	void print(std::ostream& out);
+	void print(std::ostream& out) const;
 };
 
 #endif

@@ -31,7 +31,7 @@ Card* DiscardPile::pickUp() {
 }
 
 //Return the top card off of the DiscardPile (don't remove)
-Card* DiscardPile::top() {
+Card* DiscardPile::top() const {
 	if(!discardPileVector.empty()) {
 		return discardPileVector.back();
 	}

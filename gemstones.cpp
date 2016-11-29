@@ -25,7 +25,7 @@ string Quartz::getName()
 
 void Quartz::print(std::ostream& out)
 {
-
+	out << "Q";
 }
 
 /******************/
@@ -53,7 +53,7 @@ string Hematite::getName()
 
 void Hematite::print(std::ostream& out)
 {
-
+	out << "H";
 }
 
 /******************/
@@ -81,7 +81,7 @@ string Obsidian::getName()
 
 void Obsidian::print(std::ostream& out)
 {
-
+	out << "O";
 }
 
 /******************/
@@ -109,7 +109,7 @@ string Malachite::getName()
 
 void Malachite::print(std::ostream& out)
 {
-
+	out << "M";
 }
 
 /******************/
@@ -137,7 +137,7 @@ string Turquoise::getName()
 
 void Turquoise::print(std::ostream& out)
 {
-
+	out << "T";
 }
 
 /******************/
@@ -165,7 +165,7 @@ string Ruby::getName()
 
 void Ruby::print(std::ostream& out)
 {
-
+	out << "R";
 }
 
 /******************/
@@ -193,7 +193,7 @@ string Amethyst::getName()
 
 void Amethyst::print(std::ostream& out)
 {
-
+	out << "A";
 }
 
 /******************/
@@ -219,5 +219,5 @@ string Emerald::getName()
 
 void Emerald::print(std::ostream& out)
 {
-
+	out << "E";
 }

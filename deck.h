@@ -30,7 +30,7 @@ public:
         Card* card;
         for(int i = 0; i < deck.size(); i++){
             card = deck.draw();
-            out << card->name;
+            out << card->getName();
             out << card;
         }
 
