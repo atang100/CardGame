@@ -15,14 +15,12 @@
 
 ### Deck (Will Complete Later)
 - Andy is working on this
-- What does it mean by "Also add the insertion operator to insert all the cards in the deck to an std::ostream."
 
 ### DiscardPile (TODO)
 - impelement constructor
 
 ### TradeArea (In-progress)
 - constructor incomplete
-- insertion operator incomplete
 
 ### Hand (TODO)
 - implement constructor
@@ -39,5 +37,6 @@
 - no functions have been implemented.
 
 ### CardFactory (TODO)
+- everything not done
 
 ### Pseudo Code (TODO)

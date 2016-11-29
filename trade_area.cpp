@@ -1,4 +1,4 @@
-#include "trade_area.h";
+#include "trade_area.h"
 
 
 TradeArea::TradeArea(std::istream&, CardFactory*)
@@ -53,7 +53,9 @@ int TradeArea::numCards()
 	return cards.size();
 }
 
-ostream & operator <<(ostream &out, const TradeArea&)
+ostream& operator <<(ostream &out, const TradeArea& tradeArea)
 {
-
+	for(auto card : tradeArea.cards) {
+			out << *card;
+	}
 }

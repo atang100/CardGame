@@ -23,15 +23,11 @@ public:
 	Card* draw();
 
 	inline friend ostream & operator <<(ostream &out, Deck& deck){
-
-        //write deck to file
-        out << deck.size();
-
         Card* card;
         for(int i = 0; i < deck.size(); i++){
             card = deck.draw();
             out << card->getName();
-            out << card;
+            out << *card;
         }
 
         return out;

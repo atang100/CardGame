@@ -1,8 +1,8 @@
 #include <string>
 #include <list>
 
-#include "cardFactory.h";
-#include "gemstones.h";
+#include "cardFactory.h"
+#include "gemstones.h"
 
 using std::string;
 using std::ostream;
