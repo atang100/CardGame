@@ -20,6 +20,12 @@
 ### Hand (TODO)
 
 ### Player (TODO)
+- Missing constructor used to resume game.
+- getNumChains() not done
+- buyThirdChain() not done
+- print() not done
+- insertion operator not done
+- getMaxNumChains() not done
 
 ### Table (TODO)
 
