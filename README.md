@@ -9,8 +9,9 @@
 
 ### Chain_Base (TODO)
 
-### Deck (In-progress)
+### Deck (Will Complete Later)
 - Andy is working on this
+- What does it mean by "Also add the insertion operator to insert all the cards in the deck to an std::ostream."
 
 ### DiscardPile (TODO)
 
