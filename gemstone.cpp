@@ -1,4 +1,4 @@
-#include "card.h";
+#include "gemstone.h";
 
 /******************/
 /*   Quartz       */

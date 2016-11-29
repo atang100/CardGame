@@ -12,9 +12,10 @@ class Player {
 
 protected:
 
-	string name;
-	int coins;
-	Hand* hand;
+	string d_name;
+	int d_coins;
+	Hand* d_hand;
+
 
 public:
 	
@@ -29,7 +30,7 @@ public:
 	int getNumCoins();
 
 	// add a number of coins
-	Player& operator+=(int numOfCoin);
+	Player& operator+=(int numOfCoins);
 
 	int getMaxNumChains();
 
