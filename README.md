@@ -14,10 +14,12 @@
 - What does it mean by "Also add the insertion operator to insert all the cards in the deck to an std::ostream."
 
 ### DiscardPile (TODO)
+- Missing constructor used to resume game.
 
 ### TradeArea (TODO)
 
 ### Hand (TODO)
+- Missing constructor used to resume game.
 
 ### Player (TODO)
 - Missing constructor used to resume game.
