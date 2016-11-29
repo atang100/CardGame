@@ -31,5 +31,5 @@ public:
 		outputStream << *hand.top();
 
 		return outputStream;
-	}
+	};
 }
