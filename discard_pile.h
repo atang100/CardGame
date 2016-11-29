@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-#include "gemstone.h";
+#include "gemstones.h";
 #include "cardFactory.h";
 
 using std::string;
