@@ -48,12 +48,9 @@ public:
 
 			if(canSell) {
 				return coins;
-			}else{
-				return 0;
 			}
-		}else{
-			return 0;
 		}
+		return 0;
 	};
 
 	inline void setCardName(string cardName) {
