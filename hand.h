@@ -22,4 +22,12 @@ public:
 
 	//Returns and removes card at index
 	Card* operator[](int);
+
+	inline friend ostream& operator<<(ostream& outputStream, const Hand& hand) {
+		for(auto card : hand.handQueue) {
+			outputStream << card*;
+		}
+
+		return outputStream;
+	};
 }

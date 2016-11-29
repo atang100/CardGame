@@ -26,4 +26,10 @@ public:
 
 	//Dump all cards in the discard pile to the ostream
 	void print(std::ostream&);
+
+	inline friend ostream& operator<<(ostream& outputStream, const DiscardPile& hand) {
+		outputStream << *hand.top();
+
+		return outputStream;
+	}
 }
