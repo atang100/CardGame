@@ -1,12 +1,16 @@
 #include <vector>
 #include <string>
+#include <iostream>
 
 #include "card.h";
 
 using std::string;
 using std::vector;
 
-class DiscardPile : public vector<Card> {
+class DiscardPile {
+
+private:
+	vector<Card*> discardPileVector;
 
 public:
 	DiscardPile(std::istream&, CardFactory* );
