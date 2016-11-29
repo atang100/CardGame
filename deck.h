@@ -1,11 +1,3 @@
-#include <vector>
-#include <string>
-
-#include "gemstones.h"
-
-using std::string;
-using std::vector;
-using std::ostream;
 
 /**
 * Base Class: Vector
@@ -14,13 +6,30 @@ using std::ostream;
 #ifndef DECK_H
 #define DECK_H
 
-class Deck : public vector<Card> {
+#include <vector>
+#include <string>
+
+#include "gemstones.h"
+#include "cardfactory.h"
+
+using std::string;
+using std::vector;
+using std::ostream;
+
+class CardFactory; //forward declaration
+
+class Deck : public vector<Card*> {
 
 public:
+	Deck();
 	Deck(std::istream&, CardFactory*);
 
 	// returns and removes the card at the top of the deck
 	Card* draw();
+
+	void push_back(Card*);
+
+	void shuffle();
 
 	inline friend ostream & operator <<(ostream &out, Deck& deck){
         Card* card;
