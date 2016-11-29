@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "discard_pile.h";
+#include "discard_pile.h"
 
 using std::string;
 

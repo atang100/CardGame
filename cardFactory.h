@@ -1,4 +1,7 @@
-#include "deck.h";
+#include "deck.h"
+
+#ifndef CARDFACTORY_H
+#define CARDFACTORY_H
 
 class CardFactory {
 
@@ -9,3 +12,5 @@ public:
 	// returns a deck with all 104 gemstone cards
 	Deck getDeck();
 };
+
+#endif

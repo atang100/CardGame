@@ -9,6 +9,9 @@ using std::ostream;
 using std::istream;
 using std::list;
 
+#ifndef TRADE_AREA_H
+#define TRADE_AREA_H
+
 class TradeArea {
 
 protected:
@@ -34,3 +37,5 @@ public:
 	friend ostream & operator <<(ostream &out, const TradeArea&);
 
 };
+
+#endif

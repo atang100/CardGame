@@ -8,6 +8,9 @@ using std::string;
 using std::ostream;
 using std::istream;
 
+#ifndef PLAYER_H
+#define PLAYER_H
+
 class Player {
 
 protected:
@@ -17,7 +20,7 @@ protected:
 	Hand* d_hand;
 
 public:
-	
+
 	Player(string& name);
 
 	Player(std::istream&, CardFactory*);
@@ -47,3 +50,5 @@ public:
 
 	friend ostream & operator <<(ostream &out, const Player&);
 };
+
+#endif

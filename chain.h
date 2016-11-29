@@ -8,6 +8,8 @@ using std::string;
 using std::vector;
 using std::endl;
 
+#ifndef CHAIN_H
+#define CHAIN_H
 
 class Chain_Base {
 };
@@ -69,3 +71,5 @@ public:
 		outputStream << endl;
 	};
 };
+
+#endif

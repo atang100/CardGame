@@ -4,6 +4,9 @@
 
 using std::queue;
 
+#ifndef HAND_H
+#define HAND_H
+
 class Hand {
 
 private:
@@ -37,3 +40,5 @@ public:
 		return outputStream;
 	};
 };
+
+#endif

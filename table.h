@@ -6,6 +6,9 @@ using std::string;
 using std::ostream;
 using std::istream;
 
+#ifndef TABLE_H
+#define TABLE_H
+
 class Table {
 
 protected:
@@ -22,3 +25,5 @@ public:
 
 	friend ostream & operator <<(ostream &out, const Table&);
 };
+
+#ifndef

@@ -6,6 +6,8 @@ using std::string;
  * Base Class: Card
  * Derived Classes: Quartz, Hematite, Obsidian, Malachite, Turquoise, Ruby, Amethyst, and Emerald
  */
+#ifndef GEMSTONES_H
+#define GEMSTONES_H
 
 class Card {
 
@@ -140,3 +142,5 @@ public:
 
 	void print(std::ostream& out);
 };
+
+#endif
