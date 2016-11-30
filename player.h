@@ -3,6 +3,7 @@
 #include "chain.h"
 #include "hand.h"
 #include "cardfactory.h"
+#include "discard_pile.h"
 
 using std::string;
 using std::ostream;
@@ -55,7 +56,7 @@ public:
 	//need to get hand for discarding purposes
 	Hand* getHand();
 
-	void sellChain();
+	void sellChain(DiscardPile& discardPile);
 
 	void makeNewChain(string);
 

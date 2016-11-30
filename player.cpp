@@ -145,8 +145,9 @@ Hand* Player::getHand() {
 	return d_hand;
 }
 
-void Player::sellChain() {
+void Player::sellChain(DiscardPile& discardPile) {
 	*this += chains.back()->sell(); //sell chain
+	chains.back()->moveToDiscardPile(discardPile);
 	chains.pop_back();
 }
 

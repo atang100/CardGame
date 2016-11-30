@@ -6,6 +6,7 @@
 
 #include "gemstones.h"
 #include "cardfactory.h"
+#include "discard_pile.h"
 
 using std::string;
 using std::vector;
@@ -22,7 +23,7 @@ public:
 	virtual int sell() = 0;
 	virtual Chain_Base& operator+=(Card* card) = 0;
 	virtual string getChainType() = 0;
-
+	virtual void moveToDiscardPile(DiscardPile& discardPile) = 0;
 	inline virtual ~Chain_Base() {};
 
 protected:
@@ -164,6 +165,13 @@ public:
 			}
 		}
 		return 0;
+	};
+
+	inline void moveToDiscardPile(DiscardPile& discardPile)
+	{
+		for (auto &card : chainVector) {
+			discardPile += card;
+		}
 	};
 
 	inline string getChainType() {

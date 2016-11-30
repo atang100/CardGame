@@ -155,7 +155,7 @@ int main() {
 					}
 
 					if(!addedToChain) {
-						player->sellChain(); //TODO: make this add cards to discard pile
+						player->sellChain(*discardPile); //TODO: make this add cards to discard pile
 						player->makeNewChain(playCard->getName());
 						(*player)[player->getNumChains()-1] += playCard; //add card to new chain
 					} //TODO: if the user successfully plays the card, should they be given the option to sell the chain?
@@ -228,17 +228,21 @@ int main() {
 				{
 					int maxIndex = tradeArea->numCards();
 
-					for(int tradeAreaIndex=0; tradeAreaIndex<maxIndex;tradeAreaIndex++) {
-						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
+					for(int tradeAreaIndex=0; tradeAreaIndex<maxIndex;tradeAreaIndex++) 
+					{
+						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) 
+						{
 							string chainType = (*player)[i].getChainType();
-
 							Card* peekedCard = tradeArea->peek(tradeAreaIndex);
-							if(chainType == peekedCard->getName()) { //card is same type as chain
+
+							if(chainType == peekedCard->getName()) //card is same type as chain
+							{ 
 								cout << "Do you want to chain the card " << *peekedCard << "? (y/n): ";
 								string shouldChain;
 								cin >> shouldChain;
 
-								if(shouldChain == "y") { //chain if user wants to chain
+								if(shouldChain == "y") //chain if user wants to chain
+								{
 									(*player)[i] += tradeArea->trade(chainType);
 									maxIndex--;
 									tradeAreaIndex--; //adjust loop for removed card
