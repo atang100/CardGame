@@ -51,7 +51,18 @@ public:
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 
-	friend ostream & operator <<(ostream &out, const Player&);
+	inline friend ostream & operator <<(ostream& outputStream, const Player& player)
+	{
+		outputStream << player.d_name << endl;
+		outputStream << player.d_coins << endl;
+		outputStream << player.maxNumChains << endl;
+
+		for (auto chain : player.chains) {
+			outputStream << *chain;
+		}
+
+		return outputStream;
+	};
 };
 
 #endif

@@ -106,14 +106,3 @@ void Player::printHand(std::ostream& out, bool printFullHand)
 		out << *d_hand->top();
 	}
 }
-
-ostream& operator <<(ostream& out, const Player& player)
-{
-	out << player.d_name << endl;
-	out << player.d_coins << endl;
-	out << player.maxNumChains << endl;
-
-	for(auto chain : player.chains) {
-		out << *chain;
-	}
-}
