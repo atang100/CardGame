@@ -26,7 +26,7 @@
 - implement constructor
 
 ### Player (In-progress)
-- Missing constructor used to resume game.
+- Constructor complete but missing a call to chain constructor.  Will be done later.
 
 ### Table (In-progress)
 - no functions have been implemented.
@@ -35,4 +35,5 @@
 - destructor not done (needs to destroy all cards)
 
 ### Pseudo Code (In-progress)
+- 3 txt files will be needed: player1, player2, and game 
 - need to implement game loop

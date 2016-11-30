@@ -84,7 +84,7 @@ void DiscardPile::print(std::ostream& outputStream) {
 	*/
 	outputStream << "<DiscardPile>";
 	for(auto card : discardPileVector) {
-		outputStream << *card;
+		outputStream << *card << " ";
 	}
 
 	//Important to end line to indicate the end of the discard pile.

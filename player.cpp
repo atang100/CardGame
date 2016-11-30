@@ -1,4 +1,13 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
 #include "player.h"
+
+using std::string;
+using std::endl;
+using std::getline;
+using std::istringstream;
 
 Player::Player(string& name)
 {
@@ -6,9 +15,42 @@ Player::Player(string& name)
 	d_coins = 0;
 }
 
+/*
+Important:
+
+Text file format:
+
+	name
+	coins
+	maxNumChains
+	<chain> chain1 chain2 etc
+	<hand> gemstone1 gemstone2 etc
+*/
+
 Player::Player(istream& inputStream, CardFactory* cardFactory)
 {
+	string s_coins;
+	string s_maxNumChains;
 
+	inputStream >> d_name;
+	inputStream >> s_coins;
+
+	d_coins = atoi(s_coins.c_str());
+
+	inputStream >> s_maxNumChains;
+
+	s_maxNumChains = atoi(s_maxNumChains.c_str());
+
+
+	/*
+	2 lines should remain:
+
+		<chain> chain1 chain2 etc
+		<hand> gemstone1 gemstone2 etc
+	*/
+
+	*d_hand = Hand(inputStream, cardFactory);
+	//No clue what to do with chain.
 }
 
 // get the name of the player
@@ -67,7 +109,9 @@ void Player::printHand(std::ostream& out, bool printFullHand)
 
 ostream& operator <<(ostream& out, const Player& player)
 {
-	out << player.d_name << "    " << player.d_coins << " coins" << endl;
+	out << player.d_name << endl;
+	out << player.d_coins << endl;
+	out << player.maxNumChains << endl;
 
 	for(auto chain : player.chains) {
 		out << *chain;
