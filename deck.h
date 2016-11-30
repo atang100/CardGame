@@ -32,11 +32,14 @@ public:
 	void shuffle();
 
 	inline friend ostream & operator <<(ostream &out, Deck& deck){
+
+		out << "<Deck> ";
+
         Card* card;
         for(int i = 0; i < deck.size(); i++){
             card = deck.draw();
-            out << card->getName();
-            out << *card;
+            out << *card << " ";
+			deck.push_back(card);
         }
 
         return out;

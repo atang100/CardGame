@@ -1,21 +1,58 @@
-#include <iostream>     // std::cout
-#include <algorithm>    // std::shuffle
-#include <array>        // std::array
-#include <random>       // std::default_random_engine
-#include <chrono>       // std::chrono::system_clock
+#include <algorithm>    // std::random_shuffle
+#include <iostream>
+#include <string>
+#include <sstream>
 
 #include "deck.h"
+
+using std::endl;
+using std::getline;
+using std::istringstream;
+
+
 /******************/
 /*   Deck         */
 /******************/
 
-Deck::Deck() {
+Deck::Deck() 
+{
 
 }
 
-Deck::Deck(std::istream&, CardFactory*)
-{
+/*
+This constructor is only used when we are reloading a saved game otherwise default
+constructor can be used.
+*/
 
+Deck::Deck(std::istream& inputStream, CardFactory* cardFactory)
+{
+	/*
+	Reads inputStream line by line until it finds "<Deck>" which indicates
+	that this line contains the list of cards in the deck.
+	*/
+	for (string line; getline(inputStream, line); ) {
+		if (line.find("<Deck>"))
+		{
+			//Makes it easy to loop through line by ' ' delimiter.
+			istringstream gemstone(line);
+
+			//First string is "<Deck>" but CardFactory will return nullptr
+			//so there shouldn't be an issue.
+			while (gemstone)
+			{
+				string gemstoneName;
+				gemstone >> gemstoneName;
+
+				Card* card = cardFactory->getCard(gemstoneName);
+
+				if (card != nullptr)
+				{
+					this->push_back(card);
+				}
+			}
+			break;
+		}
+	}
 }
 
 // returns and removes the card at the top of the deck
@@ -32,6 +69,5 @@ void Deck::push_back(Card* card) {
 }
 
 void Deck::shuffle() {
-	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-	std::shuffle(this->begin(), this->end(), std::default_random_engine(seed));
+	std::random_shuffle(this->begin(), this->end());
 }

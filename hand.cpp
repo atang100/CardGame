@@ -1,8 +1,44 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
 #include "hand.h"
 
-//Constructor
-Hand::Hand(std::istream&, CardFactory*) {
+using std::string;
+using std::endl;
+using std::getline;
+using std::istringstream;
 
+//Constructor
+Hand::Hand(std::istream& inputStream, CardFactory* cardFactory)
+{
+	/*
+	Reads inputStream line by line until it finds "<Hand>" which indicates
+	that this line contains the list of cards in the a players hand.
+	*/
+	for (string line; getline(inputStream, line); ) {
+		if (line.find("<Hand>"))
+		{
+			//Makes it easy to loop through line by ' ' delimiter.
+			istringstream gemstone(line);
+
+			//First string is "<Hand>" but CardFactory will return nullptr
+			//so there shouldn't be an issue.
+			while (gemstone)
+			{
+				string gemstoneName;
+				gemstone >> gemstoneName;
+
+				Card* card = cardFactory->getCard(gemstoneName);
+
+				if (card != nullptr)
+				{
+					handQueue.push(card);
+				}
+			}
+			break;
+		}
+	}
 }
 
 //Add card to back of hand
