@@ -22,7 +22,7 @@ Text File Format:
 Line 1: Name
 Line 2: Coins
 Line 3: Max Number of Chains
-Line 4: Chain (Occupies more than 4 or 6 lines depending on "maxNumChains")
+Line 4: Chain (Occupies more than 2 or 3 lines depending on "maxNumChains")
 Line 5: Hand
 */
 

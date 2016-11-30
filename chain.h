@@ -49,10 +49,6 @@ public:
 	inline ~Chain() {
 	};
 
-	/*
-	Line 1: Chain Card Name
-	Line 2: List of Cards
-	*/
 	inline Chain(std::istream& inputStream, CardFactory* cardFactory)
 	{
 		char c[256];
