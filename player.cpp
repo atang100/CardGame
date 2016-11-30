@@ -13,20 +13,17 @@ Player::Player(string& name)
 {
 	d_name = name;
 	d_coins = 0;
-
 	d_hand = new Hand();
 }
 
 /*
-Important:
+Text File Format:
 
-Text file format:
-
-	name
-	coins
-	maxNumChains
-	<chain> chain1 chain2 etc
-	<hand> gemstone1 gemstone2 etc
+Line 1: Name
+Line 2: Coins
+Line 3: Max Number of Chains
+Line 4: Chain (Occupies more than 4 or 6 lines depending on "maxNumChains")
+Line 5: Hand
 */
 
 Player::Player(istream& inputStream, CardFactory* cardFactory)
@@ -41,18 +38,17 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 
 	inputStream >> s_maxNumChains;
 
-	s_maxNumChains = atoi(s_maxNumChains.c_str());
+	maxNumChains = atoi(s_maxNumChains.c_str());
 
 
-	/*
-	2 lines should remain:
-
-		<chain> chain1 chain2 etc
-		<hand> gemstone1 gemstone2 etc
-	*/
+	//maxNumChains can take a value of 2 or 3. 
+	for (int i = 0; i < maxNumChains; i++)
+	{
+		Chain<Card*>* chain = new Chain<Card*>(inputStream, cardFactory);
+		chains.push_back(chain);
+	}
 
 	*d_hand = Hand(inputStream, cardFactory);
-	//No clue what to do with chain.
 }
 
 // get the name of the player

@@ -34,8 +34,33 @@ private:
 	vector<T*> chainVector;
 
 public:
+
+	/*
+	Line 1: Chain Card Name
+	Line 2: List of Cards
+	*/
 	inline Chain(std::istream& istream, CardFactory* cardFactory) {
 
+		inputStream >> chainCardName;
+
+		string line;
+		inputStream >> line;
+
+		//Makes it easy to loop through line by ' ' delimiter.
+		istringstream gemstone(line);
+
+		while (gemstone)
+		{
+			string gemstoneName;
+			gemstone >> gemstoneName;
+
+			Card* card = cardFactory->getCard(gemstoneName);
+
+			if (card != nullptr)
+			{
+				chainVector.push_back(card);
+			}
+		}
 	};
 
 	inline Chain<T>& operator+=(Card* card) {

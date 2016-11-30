@@ -27,15 +27,21 @@ Text File Format:
 Line 1: Deck
 Line 2: Discard Pile
 Line 3: Trade Area
+-------------------------------------------- <-- Line does not actually exist.
 Line 4: Player 1 Name
 Line 5: Player 1 Coin
 Line 6: Player 1 Max Number Chain
-Line 7: Player 1 Chain
+Line 7.1: Player 1 Chain Name
+Line 7.2: Player 1 Chain
+(Will repeat 2 or 3 times depending on Max Chain Number)
 Line 8: Player 1 Hand
+-------------------------------------------- <-- Line does not actually exist.
 Line 9: Player 2 Name
 Line 10: Player 2 Coin
 Line 11: Player 2 Max Number Chain
-Line 12: Player 2 Chain
+Line 12.1: Player 1 Chain Name
+Line 12.2: Player 2 Chain
+(Will repeat 2 or 3 times depending on Max Chain Number)
 Line 13: Player 2 Hand
 
 */
