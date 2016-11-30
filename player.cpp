@@ -30,26 +30,63 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 {
 	char c[256];
 
-	inputStream.getline(c, 256);
+	inputStream.getline(c, 256); //name
 	string name(c);
 
-	inputStream.getline(c, 256);
+	inputStream.getline(c, 256); //coin
 	string s_coins(c);
 
-	inputStream.getline(c, 256);
+	inputStream.getline(c, 256); //max chains
 	string s_maxNumChains(c);
+
+	inputStream.getline(c, 256); //current number of chains
+	string s_num_chains(c);
 
 	d_name = name;
 	d_coins = atoi(s_coins.c_str());
 	maxNumChains = atoi(s_maxNumChains.c_str());
+	int num_chains = atoi(s_num_chains.c_str());
 
 	//maxNumChains can take a value of 2 or 3.
 	//TODO this needs to set the type of the chain as well
 	//cannot create a chain of Card*
-	for (int i = 0; i < maxNumChains; i++)
+	for (int i = 0; i < num_chains; i++)
 	{
-		//Chain<Card*>* chain = new Chain<Card*>(inputStream, cardFactory);
-		//chains.push_back(chain);
+		inputStream.getline(c, 256);
+		string card_name(c);
+
+		if (card_name == "Q" || card_name == "Quartz") {
+			Chain<Quartz>* chain = new Chain<Quartz>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "H" || card_name == "Hematite") {
+			Chain<Hematite>* chain = new Chain<Hematite>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "O" || card_name == "Obsidian") {
+			Chain<Obsidian>* chain = new Chain<Obsidian>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "M" || card_name == "Malachite") {
+			Chain<Malachite>* chain = new Chain<Malachite>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "T" || card_name == "Turquoise") {
+			Chain<Turquoise>* chain = new Chain<Turquoise>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "R" || card_name == "Ruby") {
+			Chain<Ruby>* chain = new Chain<Ruby>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "A" || card_name == "Amethyst") {
+			Chain<Amethyst>* chain = new Chain<Amethyst>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
+		else if (card_name == "E" || card_name == "Emerald") {
+			Chain<Emerald>* chain = new Chain<Emerald>(inputStream, cardFactory);
+			chains.push_back(chain);
+		}
 	}
 
 	d_hand = new Hand(inputStream, cardFactory);
@@ -148,6 +185,7 @@ std::ostream& operator <<(std::ostream& outputStream, const Player& player)
 	outputStream << player.d_name << endl;
 	outputStream << player.d_coins << endl;
 	outputStream << player.maxNumChains << endl;
+	outputStream << player.chains.size() << endl;
 
 	for (auto chain : player.chains) {
 		outputStream << *chain << endl;

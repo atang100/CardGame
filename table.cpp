@@ -71,11 +71,9 @@ Table::Table(std::istream& inputStream, CardFactory* cardFactory)
 	players[1] = player2;
 }
 
-
 Player** Table::getPlayers() {
 	return players;
 }
-
 
 Card* Table::drawCardFromDeck() {
 	return deck.draw();

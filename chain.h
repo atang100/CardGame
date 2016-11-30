@@ -53,12 +53,11 @@ public:
 	Line 1: Chain Card Name
 	Line 2: List of Cards
 	*/
-	inline Chain(std::istream& inputStream, CardFactory* cardFactory) {
-
-		inputStream >> chainCardName;
-
-		string line;
-		inputStream >> line;
+	inline Chain(std::istream& inputStream, CardFactory* cardFactory) 
+	{
+		char c[256];
+		inputStream.getline(c, 256);
+		string line(c);
 
 		//Makes it easy to loop through line by ' ' delimiter.
 		istringstream gemstone(line);
@@ -70,7 +69,7 @@ public:
 
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card != nullptr)
+			if (card)
 			{
 				*this += card;
 			}
@@ -193,7 +192,7 @@ public:
 
 		for(auto card : chainVector)
 		{
-			outputStream << *card << " ";
+			outputStream << " " << *card;
 		}
 
 		outputStream << endl;
