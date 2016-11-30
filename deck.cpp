@@ -1,4 +1,8 @@
-#include <algorithm>    // std::random_shuffle
+#include <iostream>     // std::cout
+#include <algorithm>    // std::shuffle
+#include <array>        // std::array
+#include <random>       // std::default_random_engine
+#include <chrono>       // std::chrono::system_clock
 
 #include "deck.h"
 /******************/
@@ -28,5 +32,6 @@ void Deck::push_back(Card* card) {
 }
 
 void Deck::shuffle() {
-	std::random_shuffle(this->begin(), this->end());
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	std::shuffle(this->begin(), this->end(), std::default_random_engine(seed));
 }

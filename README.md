@@ -16,7 +16,6 @@
 
 ### Deck (In-progress)
 - implement constructor
-- used wrong shuffle method from std pls change
 
 ### DiscardPile (In-progress)
 - impelement constructor
