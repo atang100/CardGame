@@ -14,6 +14,9 @@ private:
 	queue<Card*> handQueue;
 
 public:
+
+	Hand();
+
 	//Constructor
 	Hand(std::istream&, CardFactory*);
 

@@ -1,7 +1,6 @@
 # CardGame
 
-## TODO
-- DON'T TOUCH ANY CONSTRUCTORS UNTIL I WAKE UP!!! I NEED TO REDO A LOT OF THEM!!!!
+HAVE TO REDO PRINT AND FUNCTION THAT OUTPUT TO OUTPUT STREAM.
 
 ### Card Hierarchy (In-progress)
 - done?
@@ -16,15 +15,12 @@
 - Pretty sure nothing needs to be done here
 
 ### Deck (In-progress)
-- implement constructor
 
 ### DiscardPile (Done, Need to Test)
 
 ### TradeArea (In-progress)
-- constructor incomplete
 
 ### Hand (In-progress)
-- implement constructor
 
 ### Player (In-progress)
 - Constructor complete but missing a call to chain constructor.  Will be done later.

@@ -19,6 +19,7 @@ protected:
 	Player* player2;
 	DiscardPile* discardPile;
 	Deck* deck;
+	TradeArea* tradeArea;
 
 public:
 

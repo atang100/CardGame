@@ -1,9 +1,38 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
 #include "trade_area.h"
 
+using std::string;
+using std::endl;
+using std::getline;
+using std::istringstream;
 
-TradeArea::TradeArea(std::istream&, CardFactory*)
+/******************/
+/*   TradeArea    */
+/******************/
+TradeArea::TradeArea(std::istream& inputStream, CardFactory* cardFactory)
 {
 
+	string line;
+	inputStream >> line;
+
+	//Makes it easy to loop through line by ' ' delimiter.
+	istringstream gemstone(line);
+
+	while (gemstone)
+	{
+		string gemstoneName;
+		gemstone >> gemstoneName;
+
+		Card* card = cardFactory->getCard(gemstoneName);
+
+		if (card != nullptr)
+		{
+			cards.push_back(card);
+		}
+	}
 }
 
 // adds the card to the trade area

@@ -26,31 +26,22 @@ constructor can be used.
 
 Deck::Deck(std::istream& inputStream, CardFactory* cardFactory)
 {
-	/*
-	Reads inputStream line by line until it finds "<Deck>" which indicates
-	that this line contains the list of cards in the deck.
-	*/
-	for (string line; getline(inputStream, line); ) {
-		if (line.find("<Deck>"))
+	string line;
+	inputStream >> line;
+
+	//Makes it easy to loop through line by ' ' delimiter.
+	istringstream gemstone(line);
+
+	while (gemstone)
+	{
+		string gemstoneName;
+		gemstone >> gemstoneName;
+
+		Card* card = cardFactory->getCard(gemstoneName);
+
+		if (card != nullptr)
 		{
-			//Makes it easy to loop through line by ' ' delimiter.
-			istringstream gemstone(line);
-
-			//First string is "<Deck>" but CardFactory will return nullptr
-			//so there shouldn't be an issue.
-			while (gemstone)
-			{
-				string gemstoneName;
-				gemstone >> gemstoneName;
-
-				Card* card = cardFactory->getCard(gemstoneName);
-
-				if (card != nullptr)
-				{
-					this->push_back(card);
-				}
-			}
-			break;
+			this->push_back(card);
 		}
 	}
 }
