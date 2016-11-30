@@ -32,12 +32,12 @@ public:
 	//Returns and removes card at index
 	Card* operator[](int);
 
-	inline friend std::ostream& operator<<(std::ostream& outputStream, Hand& hand) {
-
-		outputStream << "<Hand> ";
-
+	inline friend std::ostream& operator<<(std::ostream& outputStream, Hand& hand) 
+	{
 		int queueSize = hand.handQueue.size();
-		for(int i=0; i=queueSize; i++) {
+
+		for(int i=0; i=queueSize; i++) 
+		{
 			Card* card = hand.handQueue.front();
 			hand.handQueue.pop();
 			outputStream << *card << " ";

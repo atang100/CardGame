@@ -12,6 +12,12 @@ using std::istringstream;
 /******************/
 /*   TradeArea    */
 /******************/
+
+TradeArea::TradeArea()
+{
+
+}
+
 TradeArea::TradeArea(std::istream& inputStream, CardFactory* cardFactory)
 {
 
@@ -80,11 +86,4 @@ Card* TradeArea::trade(string name)
 int TradeArea::numCards()
 {
 	return cards.size();
-}
-
-ostream& operator <<(ostream &out, const TradeArea& tradeArea)
-{
-	for(auto card : tradeArea.cards) {
-			out << *card;
-	}
 }

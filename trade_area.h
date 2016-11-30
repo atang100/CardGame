@@ -20,6 +20,8 @@ protected:
 
 public:
 
+	TradeArea();
+
 	TradeArea(std::istream&, CardFactory*);
 
 	// adds the card to the trade area
@@ -34,7 +36,13 @@ public:
 	// returns number of cards currently in trade area
 	int numCards();
 
-	friend ostream & operator <<(ostream &out, const TradeArea&);
+	inline friend ostream & operator <<(ostream &out, const TradeArea&)
+	{
+		for (auto card : tradeArea.cards) {
+			out << *card << " ";
+		}
+		return out;
+	}
 
 };
 

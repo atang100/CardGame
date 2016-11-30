@@ -95,13 +95,13 @@ public:
 		chainCardName = cardName;
 	};
 
-	inline void print(std::ostream& outputStream) const {
-		outputStream << chainCardName;
-		outputStream << "    ";
+	inline void print(std::ostream& outputStream) const 
+	{
+		outputStream << chainCardName << endl;
 
-		for(auto card : chainVector) {
-			outputStream << *card;
-			outputStream << " ";
+		for(auto card : chainVector) 
+		{
+			outputStream << *card << " ";
 		}
 
 		outputStream << endl;

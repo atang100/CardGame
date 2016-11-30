@@ -7,6 +7,7 @@
 
 using std::string;
 using std::vector;
+using std::endl;
 
 #ifndef DISCARD_PILE_H
 #define DISCARD_PILE_H
@@ -36,7 +37,6 @@ public:
 
 	inline friend std::ostream& operator<<(std::ostream& outputStream, const DiscardPile& discardPile) {
 		outputStream << *discardPile.top();
-
 		return outputStream;
 	};
 };

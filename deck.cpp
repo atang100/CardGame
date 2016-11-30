@@ -1,11 +1,9 @@
 #include <algorithm>    // std::random_shuffle
 #include <iostream>
-#include <string>
 #include <sstream>
 
 #include "deck.h"
 
-using std::endl;
 using std::getline;
 using std::istringstream;
 
@@ -16,7 +14,7 @@ using std::istringstream;
 
 Deck::Deck() 
 {
-
+	//No implementation needed.
 }
 
 /*
@@ -24,7 +22,7 @@ This constructor is only used when we are reloading a saved game otherwise defau
 constructor can be used.
 */
 
-Deck::Deck(std::istream& inputStream, CardFactory* cardFactory)
+Deck::Deck(istream& inputStream, CardFactory* cardFactory)
 {
 	string line;
 	inputStream >> line;

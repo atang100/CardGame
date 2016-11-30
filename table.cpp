@@ -12,6 +12,7 @@ Table::Table()
 	CardFactory* cardFactory = CardFactory::getFactory();
 	deck = cardFactory->getDeck;
 	*discardPile = DiscardPile();
+	*tradeArea = TradeArea();
 
 	//TODO: Replace temp names with a user entered name.
 	string p1_name = "Player 1";
@@ -63,5 +64,9 @@ bool Table::win(std::string& playerName)
 // prints the complete table with all the contents
 void Table::print(std::ostream& outputStream)
 {
-
+	outputStream << *deck << endl; //print deck
+	discardPile->print(outputStream); //print discard pile
+	outputStream << *tradeArea << endl; //print trade area
+	outputStream << *player1 << endl; //print player 1
+	outputStream << *player2 << endl; //print player 2
 }

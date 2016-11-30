@@ -58,8 +58,11 @@ public:
 		outputStream << player.maxNumChains << endl;
 
 		for (auto chain : player.chains) {
-			outputStream << *chain;
+			chain->print(outputStream);
 		}
+		
+		outputStream << endl;
+		outputStream << *d_hand << endl;
 
 		return outputStream;
 	};

@@ -72,11 +72,7 @@ Card* DiscardPile::top() const {
 
 //Dump all cards in the discard pile to the ostream
 void DiscardPile::print(std::ostream& outputStream) {
-
 	for(auto card : discardPileVector) {
 		outputStream << *card << " ";
 	}
-
-	//Important to end line to indicate the end of the discard pile.
-	outputStream << endl; 
 }
