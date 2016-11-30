@@ -17,8 +17,7 @@
 ### Deck (In-progress)
 - implement constructor
 
-### DiscardPile (In-progress)
-- impelement constructor
+### DiscardPile (Done, Need to Test)
 
 ### TradeArea (In-progress)
 - constructor incomplete
