@@ -1,6 +1,6 @@
 # CardGame
 
-HAVE TO REDO PRINT AND FUNCTION THAT OUTPUT TO OUTPUT STREAM.
+Constructors/Insertion Operator are more or less complete but completely untested.
 
 ### Card Hierarchy (In-progress)
 - done?
@@ -8,7 +8,6 @@ HAVE TO REDO PRINT AND FUNCTION THAT OUTPUT TO OUTPUT STREAM.
 - card desstructor needs to be virtual so that sub-classes are destructed properly
 
 ### Chain (In-progress)
-- implement constructor
 - I feel like this will be buggy
 
 ### Chain_Base (DONE)
@@ -23,7 +22,6 @@ HAVE TO REDO PRINT AND FUNCTION THAT OUTPUT TO OUTPUT STREAM.
 ### Hand (In-progress)
 
 ### Player (In-progress)
-- Constructor complete but missing a call to chain constructor.  Will be done later.
 
 ### Table (In-progress)
 - no functions have been implemented.
