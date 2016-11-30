@@ -5,38 +5,36 @@
 ### Card Hierarchy (In-progress)
 - done?
 - can all methods be const?
+- card desstructor needs to be virtual so that sub-classes are destructed properly
 
-### Chain (TODO)
+### Chain (In-progress)
 - implement constructor
 - I feel like this will be buggy
 
-### Chain_Base (TODO)
-- might not need anything here
+### Chain_Base (DONE)
+- Pretty sure nothing needs to be done here
 
-### Deck (Will Complete Later)
-- Andy is working on this
+### Deck (In-progress)
+- implement constructor
+- used wrong shuffle method from std pls change
 
-### DiscardPile (TODO)
+### DiscardPile (In-progress)
 - impelement constructor
 
 ### TradeArea (In-progress)
 - constructor incomplete
 
-### Hand (TODO)
+### Hand (In-progress)
 - implement constructor
 
 ### Player (In-progress)
 - Missing constructor used to resume game.
-- getNumChains() not done
-- buyThirdChain() not done
-- print() not done
-- insertion operator not done
-- getMaxNumChains() not done
 
 ### Table (In-progress)
 - no functions have been implemented.
 
-### CardFactory (TODO)
-- everything not done
+### CardFactory (In-progress)
+- destructor not done (needs to destroy all cards)
 
-### Pseudo Code (TODO)
+### Pseudo Code (In-progress)
+- need to implement game loop

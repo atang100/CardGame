@@ -1,8 +1,6 @@
 #include <algorithm>    // std::random_shuffle
 
 #include "deck.h"
-#include "cardFactory.h"
-
 /******************/
 /*   Deck         */
 /******************/
@@ -25,10 +23,10 @@ Card* Deck::draw()
 	return card;
 }
 
-Deck::push_back(Card* card) {
+void Deck::push_back(Card* card) {
 	this->push_back(card);
 }
 
-Deck::shuffle() {
+void Deck::shuffle() {
 	std::random_shuffle(this->begin(), this->end());
 }

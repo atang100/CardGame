@@ -1,6 +1,7 @@
 #include <queue>
 
 #include "gemstones.h"
+#include "cardfactory.h"
 
 using std::queue;
 

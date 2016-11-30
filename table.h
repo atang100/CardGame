@@ -1,6 +1,6 @@
 #include <string>
 
-#include "cardFactory.h";
+#include "cardfactory.h"
 
 using std::string;
 using std::ostream;
@@ -26,4 +26,4 @@ public:
 	friend ostream & operator <<(ostream &out, const Table&);
 };
 
-#ifndef
+#endif

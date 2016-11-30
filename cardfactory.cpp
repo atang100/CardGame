@@ -1,5 +1,8 @@
 #include "cardfactory.h"
 
+CardFactory* CardFactory::instance;
+vector<Card*> CardFactory::cards;
+
 CardFactory* CardFactory::getFactory() {
 	if(instance != 0) {
 		instance = new CardFactory();

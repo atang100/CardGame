@@ -1,4 +1,5 @@
-#include "gemstones.h";
+#include "gemstones.h"
+using std::string;
 
 /******************/
 /*   Quartz       */
@@ -23,7 +24,7 @@ string Quartz::getName()
 	return name;
 }
 
-void Quartz::print(std::ostream& out)
+void Quartz::print(std::ostream& out) const
 {
 	out << "Q";
 }
@@ -51,7 +52,7 @@ string Hematite::getName()
 	return name;
 }
 
-void Hematite::print(std::ostream& out)
+void Hematite::print(std::ostream& out) const
 {
 	out << "H";
 }
@@ -79,7 +80,7 @@ string Obsidian::getName()
 	return name;
 }
 
-void Obsidian::print(std::ostream& out)
+void Obsidian::print(std::ostream& out) const
 {
 	out << "O";
 }
@@ -107,7 +108,7 @@ string Malachite::getName()
 	return name;
 }
 
-void Malachite::print(std::ostream& out)
+void Malachite::print(std::ostream& out) const
 {
 	out << "M";
 }
@@ -135,7 +136,7 @@ string Turquoise::getName()
 	return name;
 }
 
-void Turquoise::print(std::ostream& out)
+void Turquoise::print(std::ostream& out) const
 {
 	out << "T";
 }
@@ -163,7 +164,7 @@ string Ruby::getName()
 	return name;
 }
 
-void Ruby::print(std::ostream& out)
+void Ruby::print(std::ostream& out) const
 {
 	out << "R";
 }
@@ -191,7 +192,7 @@ string Amethyst::getName()
 	return name;
 }
 
-void Amethyst::print(std::ostream& out)
+void Amethyst::print(std::ostream& out) const
 {
 	out << "A";
 }
@@ -217,7 +218,7 @@ string Emerald::getName()
 	return name;
 }
 
-void Emerald::print(std::ostream& out)
+void Emerald::print(std::ostream& out) const
 {
 	out << "E";
 }

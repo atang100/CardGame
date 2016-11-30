@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "gemstones.h"
-#include "cardFactory.h"
+#include "cardfactory.h"
 
 using std::string;
 using std::vector;

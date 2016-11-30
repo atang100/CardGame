@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 using std::string;
 
@@ -12,12 +13,15 @@ using std::string;
 class Card {
 
 public:
+
+	friend std::ostream& operator<<(std::ostream& out, const Card& card);
 	// get how many cards necessary to receive "x" amount of coins.
 	virtual int getCardsPerCoin(int coins) = 0;
 
 	// returns full name of card.
 	virtual string getName() = 0;
 
+protected:
 	virtual void print(std::ostream& out) const = 0;
 };
 

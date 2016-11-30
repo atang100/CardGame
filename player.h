@@ -1,12 +1,13 @@
 #include <string>
 
-#include "Chain_Base.h";
-#include "hand.h";
-#include "cardFactory.h";
+#include "chain.h"
+#include "hand.h"
+#include "cardfactory.h"
 
 using std::string;
 using std::ostream;
 using std::istream;
+using std::endl;
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -18,6 +19,8 @@ protected:
 	string d_name;
 	int d_coins;
 	Hand* d_hand;
+	int maxNumChains = 2;
+	vector<Chain_Base*> chains;
 
 public:
 

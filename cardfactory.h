@@ -9,6 +9,8 @@
 
 using std::vector;
 
+class Deck; //forward declaration
+
 class CardFactory {
 
 	static CardFactory* instance;

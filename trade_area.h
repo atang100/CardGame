@@ -1,7 +1,7 @@
 #include <string>
 #include <list>
 
-#include "cardFactory.h"
+#include "cardfactory.h"
 #include "gemstones.h"
 
 using std::string;

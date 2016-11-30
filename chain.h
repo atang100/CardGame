@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "gemstones.h"
+#include "cardfactory.h"
 
 using std::string;
 using std::vector;
@@ -12,15 +13,25 @@ using std::endl;
 #define CHAIN_H
 
 class Chain_Base {
+
+public:
+	friend std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase);
+
+protected:
+	virtual void print(std::ostream& out) const = 0;
 };
 
+inline std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase) {
+	chainBase.print(outputStream);
+	return outputStream;
+};
 
 template <class T>
 class Chain : public Chain_Base {
 
 private:
 	string chainCardName;
-	vector<T> chainVector;
+	vector<T*> chainVector;
 
 public:
 	inline Chain(std::istream& istream, CardFactory* cardFactory) {
@@ -59,17 +70,17 @@ public:
 		chainCardName = cardName;
 	};
 
-	inline friend std::ostream& operator<<(std::ostream& outputStream, const Chain& chain) {
-		outputStream << chain.chainCardName;
+	inline void print(std::ostream& outputStream) const {
+		outputStream << chainCardName;
 		outputStream << "    ";
 
-		for(auto card : chain.chainVector) {
+		for(auto card : chainVector) {
 			outputStream << *card;
 			outputStream << " ";
 		}
 
 		outputStream << endl;
-	};
+	}
 };
 
 #endif
