@@ -1,6 +1,7 @@
 # CardGame
 
 ## TODO
+- DON'T TOUCH ANY CONSTRUCTORS UNTIL I WAKE UP!!! I NEED TO REDO A LOT OF THEM!!!!
 
 ### Card Hierarchy (In-progress)
 - done?

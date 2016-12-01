@@ -13,6 +13,8 @@ Player::Player(string& name)
 {
 	d_name = name;
 	d_coins = 0;
+
+	d_hand = new Hand();
 }
 
 /*

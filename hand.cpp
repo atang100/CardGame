@@ -9,6 +9,12 @@ using std::endl;
 using std::getline;
 using std::istringstream;
 
+//Default constructor
+Hand::Hand()
+{
+
+}
+
 //Constructor
 Hand::Hand(std::istream& inputStream, CardFactory* cardFactory)
 {

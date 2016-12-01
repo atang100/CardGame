@@ -13,6 +13,12 @@ using std::istringstream;
 /*   DiscardPile  */
 /******************/
 
+//Default constructor.
+DiscardPile::DiscardPile()
+{
+
+}
+
 /*
 This constructor is only used when we are reloading a saved game otherwise default
 constructor can be used.

@@ -1,6 +1,8 @@
 #include <string>
 
 #include "cardfactory.h"
+#include "player.h"
+#include "discard_pile.h"
 
 using std::string;
 using std::ostream;
@@ -13,7 +15,14 @@ class Table {
 
 protected:
 
+	Player* player1;
+	Player* player2;
+	DiscardPile* discardPile;
+	Deck* deck;
+
 public:
+
+	Table();
 
 	Table(std::istream&, CardFactory*);
 

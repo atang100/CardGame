@@ -17,6 +17,9 @@ private:
 	vector<Card*> discardPileVector;
 
 public:
+
+	DiscardPile();
+
 	DiscardPile(std::istream&, CardFactory* );
 
 	//Discard a card to the DiscardPile
