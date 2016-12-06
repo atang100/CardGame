@@ -33,15 +33,7 @@ public:
 
 	void shuffle();
 
-	inline friend ostream & operator <<(ostream &out, Deck& deck){
-        Card* card;
-        for(int i = 0; i < deck.size(); i++){
-            card = deck.draw();
-            out << *card << " ";
-			deck.push_back(card);
-        }
-        return out;
-    };
+	friend ostream& operator <<(ostream &out, const Deck& deck);
 };
 
 #endif

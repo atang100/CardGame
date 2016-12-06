@@ -60,3 +60,12 @@ void Deck::push_back(Card* card) {
 void Deck::shuffle() {
 	std::random_shuffle(this->begin(), this->end());
 }
+
+ostream& operator <<(ostream &out, const Deck& deck) {
+	Card* card;
+	for(int i = 0; i < deck.size(); i++){
+			card = deck[i];
+			out << *card << " ";
+	}
+	return out;
+}

@@ -74,7 +74,7 @@ int main() {
 		if(pause == "y") { //save logic
 
 		}else{ //actual game logic
-
+			table->print(cout);
 		}
 	}
 

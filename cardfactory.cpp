@@ -65,8 +65,6 @@ Deck CardFactory::getDeck() {
 		cards.push_back(card);
 	}
 
-	printf("CardFactory: returning deck");
-	fflush(stdout);
 	return deck;
 }
 
