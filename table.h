@@ -25,7 +25,7 @@ protected:
 
 public:
 
-	Table();
+	Table(string, string);
 
 	Table(std::istream&, CardFactory*);
 

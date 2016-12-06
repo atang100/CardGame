@@ -12,7 +12,7 @@ using std::istringstream;
 /*   Deck         */
 /******************/
 
-Deck::Deck() 
+Deck::Deck()
 {
 	//No implementation needed.
 }
@@ -54,7 +54,7 @@ Card* Deck::draw()
 }
 
 void Deck::push_back(Card* card) {
-	this->push_back(card);
+	vector<Card*>::push_back(card);
 }
 
 void Deck::shuffle() {

@@ -16,7 +16,7 @@ class CardFactory {
 	static CardFactory* instance;
 	static vector<Card*> cards;
 
-	CardFactory() {
+	CardFactory() { //private constructor
 	}
 
 public:

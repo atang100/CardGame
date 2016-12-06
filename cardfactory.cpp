@@ -4,7 +4,8 @@ CardFactory* CardFactory::instance;
 vector<Card*> CardFactory::cards;
 
 CardFactory* CardFactory::getFactory() {
-	if(instance != 0) {
+
+	if(instance == nullptr) {
 		instance = new CardFactory();
 	}
 
@@ -64,6 +65,8 @@ Deck CardFactory::getDeck() {
 		cards.push_back(card);
 	}
 
+	printf("CardFactory: returning deck");
+	fflush(stdout);
 	return deck;
 }
 

@@ -16,7 +16,6 @@ using std::istringstream;
 //Default constructor.
 DiscardPile::DiscardPile()
 {
-
 }
 
 /*
@@ -24,7 +23,7 @@ This constructor is only used when we are reloading a saved game otherwise defau
 constructor can be used.
 */
 
-DiscardPile::DiscardPile(std::istream& inputStream, CardFactory* cardFactory) 
+DiscardPile::DiscardPile(std::istream& inputStream, CardFactory* cardFactory)
 {
 	string line;
 	inputStream >> line;

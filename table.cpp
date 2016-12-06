@@ -7,19 +7,18 @@
 /*   Table        */
 /******************/
 
-Table::Table()
+Table::Table(string player1Name, string player2Name)
 {
 	CardFactory* cardFactory = CardFactory::getFactory();
+
 	deck = cardFactory->getDeck();
-	*discardPile = DiscardPile();
-	*tradeArea = TradeArea();
 
-	//TODO: Replace temp names with a user entered name.
-	string p1_name = "Player 1";
-	string p2_name = "Player 2";
+	discardPile = new DiscardPile();
 
-	*player1 = Player(p1_name);
-	*player2 = Player(p2_name);
+	tradeArea = new TradeArea();
+
+	player1 = new Player(player1Name);
+	player2 = new Player(player2Name);
 }
 
 /*
@@ -58,7 +57,23 @@ Table::Table(std::istream& inputStream, CardFactory* cardFactory)
 // returns true when a player has won
 bool Table::win(std::string& playerName)
 {
+	if(deck.empty()) {
 
+		int player1Coins = player1->getNumCoins();
+		int player2Coins = player2->getNumCoins();
+
+		if(player1Coins > player2Coins) {
+			playerName = player1->getName();
+		}else if(player2Coins > player1Coins) {
+			playerName = player2->getName();
+		}else{
+			playerName = ""; //tie case
+		}
+
+		return true;
+	}
+
+	return false;
 }
 
 // prints the complete table with all the contents
