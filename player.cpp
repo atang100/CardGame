@@ -41,11 +41,13 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 	maxNumChains = atoi(s_maxNumChains.c_str());
 
 
-	//maxNumChains can take a value of 2 or 3. 
+	//maxNumChains can take a value of 2 or 3.
+	//TODO this needs to set the type of the chain as well
+	//cannot create a chain of Card*
 	for (int i = 0; i < maxNumChains; i++)
 	{
-		Chain<Card*>* chain = new Chain<Card*>(inputStream, cardFactory);
-		chains.push_back(chain);
+		//Chain<Card*>* chain = new Chain<Card*>(inputStream, cardFactory);
+		//chains.push_back(chain);
 	}
 
 	*d_hand = Hand(inputStream, cardFactory);

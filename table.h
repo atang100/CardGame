@@ -3,6 +3,8 @@
 #include "cardfactory.h"
 #include "player.h"
 #include "discard_pile.h"
+#include "trade_area.h"
+#include "deck.h"
 
 using std::string;
 using std::ostream;
@@ -18,7 +20,7 @@ protected:
 	Player* player1;
 	Player* player2;
 	DiscardPile* discardPile;
-	Deck* deck;
+	Deck deck;
 	TradeArea* tradeArea;
 
 public:

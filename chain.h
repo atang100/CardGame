@@ -1,6 +1,8 @@
 #include <string>
 #include <vector>
+#include <sstream>
 #include <iostream>
+#include <type_traits>
 
 #include "gemstones.h"
 #include "cardfactory.h"
@@ -8,6 +10,7 @@
 using std::string;
 using std::vector;
 using std::endl;
+using std::istringstream;
 
 #ifndef CHAIN_H
 #define CHAIN_H
@@ -39,7 +42,7 @@ public:
 	Line 1: Chain Card Name
 	Line 2: List of Cards
 	*/
-	inline Chain(std::istream& istream, CardFactory* cardFactory) {
+	inline Chain(std::istream& inputStream, CardFactory* cardFactory) {
 
 		inputStream >> chainCardName;
 
@@ -58,13 +61,67 @@ public:
 
 			if (card != nullptr)
 			{
-				chainVector.push_back(card);
+				*this += card;
 			}
 		}
 	};
 
 	inline Chain<T>& operator+=(Card* card) {
-		chainVector.push_back(card);
+
+		//downcast
+		Quartz* quartzCard = dynamic_cast<Quartz*>(card);
+		Hematite* hematiteCard = dynamic_cast<Hematite*>(card);
+		Obsidian* obsidianCard = dynamic_cast<Obsidian*>(card);
+		Malachite* malachiteCard = dynamic_cast<Malachite*>(card);
+		Turquoise* turquoiseCard = dynamic_cast<Turquoise*>(card);
+		Ruby* rubyCard = dynamic_cast<Ruby*>(card);
+		Amethyst* amethystCard = dynamic_cast<Amethyst*>(card);
+		Emerald* emeraldCard = dynamic_cast<Emerald*>(card);
+
+		//nullptr means ivalid cast
+		if(quartzCard != nullptr) {
+			if(std::is_same<T, Quartz>::value) {
+				chainVector.push_back(quartzCard);
+				return *this;
+			}
+		}else if(hematiteCard != nullptr) {
+			if(std::is_same<T, Hematite>::value) {
+				chainVector.push_back(hematiteCard);
+				return *this;
+			}
+		}else if(obsidianCard != nullptr) {
+			if(std::is_same<T, Obsidian>::value) {
+				chainVector.push_back(obsidianCard);
+				return *this;
+			}
+		}else if(malachiteCard != nullptr) {
+			if(std::is_same<T, Malachite>::value) {
+				chainVector.push_back(malachiteCard);
+				return *this;
+			}
+		}else if(turquoiseCard != nullptr) {
+			if(std::is_same<T, Turquoise>::value) {
+				chainVector.push_back(turquoiseCard);
+				return *this;
+			}
+		}else if(rubyCard != nullptr) {
+			if(std::is_same<T, Ruby>::value) {
+				chainVector.push_back(rubyCard);
+				return *this;
+			}
+		}else if(amethystCard != nullptr) {
+			if(std::is_same<T, Amethyst>::value) {
+				chainVector.push_back(amethystCard);
+				return *this;
+			}
+		}else if(emeraldCard != nullptr) {
+			if(std::is_same<T, Emerald>::value) {
+				chainVector.push_back(emeraldCard);
+				return *this;
+			}
+		}
+
+		return *this; // change to throw exception
 	};
 
 	inline int sell() {
@@ -95,11 +152,11 @@ public:
 		chainCardName = cardName;
 	};
 
-	inline void print(std::ostream& outputStream) const 
+	inline void print(std::ostream& outputStream) const
 	{
 		outputStream << chainCardName << endl;
 
-		for(auto card : chainVector) 
+		for(auto card : chainVector)
 		{
 			outputStream << *card << " ";
 		}

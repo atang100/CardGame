@@ -36,7 +36,7 @@ public:
 	// returns number of cards currently in trade area
 	int numCards();
 
-	inline friend ostream & operator <<(ostream &out, const TradeArea&)
+	inline friend ostream & operator <<(ostream &out, const TradeArea& tradeArea)
 	{
 		for (auto card : tradeArea.cards) {
 			out << *card << " ";
