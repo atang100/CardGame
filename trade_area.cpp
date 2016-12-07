@@ -52,7 +52,7 @@ TradeArea& TradeArea::operator+=(Card* card)
 bool TradeArea::legal(Card* card)
 {
 	for (std::list<Card*>::const_iterator iterator = cards.begin(), end = cards.end(); iterator != end; ++iterator) {
-		if (card == *iterator)
+		if (card->getName() == (*iterator)->getName())
 		{
 			return true;
 		}
@@ -86,4 +86,8 @@ Card* TradeArea::trade(string name)
 int TradeArea::numCards()
 {
 	return cards.size();
+}
+
+list<Card*> TradeArea::getCards() {
+	return cards;
 }

@@ -105,6 +105,10 @@ Hand* Player::getHand() {
 	return d_hand;
 }
 
+vector<Chain_Base*> Player::getChains() {
+	return chains;
+}
+
 // print the top in player's hand if false, other print entire hand
 void Player::printHand(std::ostream& out, bool printFullHand)
 {

@@ -41,3 +41,5 @@ Compiles at least
 
 -need destructors
 -drawing from deck not checked for nullptr/empty deck
+-main loop still in progress, comments show stuff that needs to be fixed and where stuff needs to go
+-need to read 1 txt file for save

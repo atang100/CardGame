@@ -121,7 +121,7 @@ public:
 			}
 		}
 
-		return *this; // change to throw exception
+		throw IllegalTypeException();
 	};
 
 	inline int sell() {

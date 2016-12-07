@@ -55,6 +55,8 @@ public:
 	//need to get hand for discarding purposes
 	Hand* getHand();
 
+	vector<Chain_Base*> getChains();
+
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 

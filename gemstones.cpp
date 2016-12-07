@@ -1,6 +1,12 @@
 #include "gemstones.h"
 using std::string;
 
+
+const char* IllegalTypeException::what() const throw() {
+	return "Card type and chain type did not match";
+}
+
+
 /******************/
 /*   Quartz       */
 /******************/

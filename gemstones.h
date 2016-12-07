@@ -1,7 +1,9 @@
 #include <string>
 #include <iostream>
+#include <exception>
 
 using std::string;
+using std::exception;
 
 /**
  * Base Class: Card
@@ -9,6 +11,12 @@ using std::string;
  */
 #ifndef GEMSTONES_H
 #define GEMSTONES_H
+
+
+class IllegalTypeException : public exception {
+	virtual const char* what() const throw();
+};
+
 
 class Card {
 
