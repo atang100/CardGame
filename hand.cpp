@@ -71,23 +71,27 @@ int Hand::size() {
 }
 
 //Returns and removes card at index
-Card* Hand::operator[](int index) {
+Card* Hand::operator[](int index) 
+{
 	Card* returnCard = nullptr;
 
 	int queueSize = handQueue.size();
 
-	for(int i=0; i=queueSize; i++) { //loop through queue
+	for(int i=0; i<queueSize; i++) //loop through queue
+	{
 		Card* card = handQueue.front(); //dequeue first element
 		handQueue.pop();
 
-		if(i == index) {
+		if (i == index) 
+		{
 			returnCard = card; //at index, this is the pointer we want to return
 			//if we are at the index, don't reinsert into the queue so that it is removed
-		}else{
+		}
+		else
+		{
 			handQueue.push(card); //if not at the index put the element back in the queue
 		}
 	}
-
 	return returnCard;
 }
 
