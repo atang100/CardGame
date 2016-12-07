@@ -19,11 +19,11 @@ class Chain_Base {
 
 public:
 	friend std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase);
-	inline virtual int sell() {};
-	virtual Chain_Base& operator+=(Card* card){};
-	virtual string getChainType(){};
+	virtual int sell() = 0;
+	virtual Chain_Base& operator+=(Card* card) = 0;
+	virtual string getChainType() = 0;
 
-	inline virtual ~Chain_Base(){};
+	inline virtual ~Chain_Base() {};
 
 protected:
 	virtual void print(std::ostream& out) const = 0;
@@ -83,6 +83,8 @@ public:
 		}else{
 			throw IllegalTypeException();
 		}
+
+		return *this;
 
 		//downcast
 		/*
