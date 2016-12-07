@@ -69,6 +69,7 @@ int Player::getNumCoins()
 Player& Player::operator+=(int numOfCoins)
 {
 	d_coins += numOfCoins;
+	return *this;
 }
 
 int Player::getMaxNumChains()

@@ -17,7 +17,7 @@ using std::ifstream;
 
 int main() {
 
-	Table* table;
+	Table* table = NULL;
 
 	//************ INPUT PHASE START
 	cout << "Welcome to the CSI2372 Card Game" << endl;
@@ -28,7 +28,8 @@ int main() {
 	string in;
 	cin >> in;
 
-	if(in == "1") { //new game
+	if (in == "1") //new game
+	{ 
 
 		string player1Name;
 		string player2Name;
@@ -40,8 +41,9 @@ int main() {
 
 		table = new Table(player1Name, player2Name);
 
-	}else if(in == "2") { //saved game
-
+	}
+	else if (in == "2") //saved game
+	{ 
 		string saveFileName;
 
 		cout << "Save file name: ";
@@ -50,12 +52,18 @@ int main() {
 		ifstream inFile;
 		inFile.open(saveFileName);
 
-		if(!inFile) {
+		if (!inFile) 
+		{
 			cerr << "Could not open the save file!" << endl;
 			return -1;
 		}
 
 		table = new Table(inFile, CardFactory::getFactory()); // pass file input stream to table constructor
+	}
+
+	if (table == NULL)
+	{
+		return -1;
 	}
 
 	//*************** END OF INPUT PHASE
@@ -71,17 +79,23 @@ int main() {
 		cout << "Pause? (y/n): ";
 		cin >> pause;
 
-		if(pause == "y") { //save logic
+		if(pause == "y") //save logic
+		{ 
 
-		}else{ //actual game logic
+		}
+		else //actual game logic
+		{ 
 			Player** players = table->getPlayers();
-			for(int i=0;i<2;i++) {
+
+			for(int i=0;i<2;i++) 
+			{
 				Player* player = players[i];
 
 				table->print(cout); //print table, maybe add another method to make this look nicer
 
 				//can buy a chain if they have 3 coins and 2 chains
-				if(player->getNumCoins() >= 3 && player->getNumChains() == 2) {
+				if(player->getNumCoins() >= 3 && player->getNumChains() == 2) 
+				{
 					//player->buyThirdChain();
 				}
 
@@ -92,7 +106,8 @@ int main() {
 				DiscardPile* discardPile = table->getDiscardPile();
 
 
-				if(tradeArea->numCards() > 0) { //if trade area not empty
+				if (tradeArea->numCards() > 0) //if trade area not empty
+				{
 					//add cards from trade area to chains or discard them
 
 					/* FIX THIS TOO
@@ -124,39 +139,42 @@ int main() {
 				string discard;
 				cin >> discard;
 
-				if(discard == "y") {
+				if(discard == "y") 
+				{
 					player->printHand(cout, true); //print full hand
 
 					int handSize = player->getHand()->size();
 
-					for(int displayIndex=0;displayIndex<handSize;displayIndex++) {
+					for(int displayIndex=0;displayIndex<handSize;displayIndex++) 
+					{
 						cout << displayIndex << " ";
 					}
 					cout << endl;
 
-					cout << "Enter an index to discard: ";
+					bool has_only_digits = false;
 					string index;
-					cin >> index;
 
-					while(stoi(index) >= handSize) {
+					while (has_only_digits == false || stoi(index) >= handSize)
+					{
 						cout << "Enter an index to discard: ";
-						string index;
 						cin >> index;
+						has_only_digits = (index.find_first_not_of("0123456789") == string::npos); //Makes sure user enters a number.
 					}
 
 					Card* arbitraryCard = (*player->getHand())[stoi(index)];
 					*discardPile += arbitraryCard;
 				}
 				//**** END OF DISCARD PHASE *****
-
 				//draw 3 cards from deck & put on trade area
-				for(int j=0;j<3;j++) {
+				for(int j=0;j<3;j++) 
+				{
 					*tradeArea += table->drawCardFromDeck();
 				}
 
 				//while top discard pile card matches a card in the trade area
 					//draw the top card from discard pile and put in trade area
-				while(tradeArea->legal(discardPile->top())) {
+				while(tradeArea->legal(discardPile->top())) 
+				{
 					*tradeArea += discardPile->pickUp();
 				}
 
