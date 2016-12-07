@@ -21,6 +21,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase);
 	inline virtual int sell() {};
 	virtual Chain_Base& operator+=(Card* card){};
+	virtual string getChainType(){};
 
 	inline virtual ~Chain_Base(){};
 
@@ -164,8 +165,24 @@ public:
 		return 0;
 	};
 
-	inline void setCardName(string cardName) {
-		chainCardName = cardName;
+	inline string getChainType() {
+		if(std::is_same<T, Quartz>::value) {
+			return "Quartz";
+		}else if(std::is_same<T, Hematite>::value) {
+			return "Hematite";
+		}else if(std::is_same<T, Obsidian>::value) {
+			return "Obsidian";
+		}else if(std::is_same<T, Malachite>::value) {
+			return "Malachite";
+		}else if(std::is_same<T, Turquoise>::value) {
+			return "Turquoise";
+		}else if(std::is_same<T, Ruby>::value) {
+			return "Ruby";
+		}else if(std::is_same<T, Amethyst>::value) {
+			return "Amethyst";
+		}else if(std::is_same<T, Emerald>::value) {
+			return "Emerald";
+		}
 	};
 
 	inline void print(std::ostream& outputStream) const

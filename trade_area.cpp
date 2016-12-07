@@ -82,12 +82,18 @@ Card* TradeArea::trade(string name)
 	return card;
 }
 
+//pop card and return
+Card* TradeArea::getTop() {
+	Card* card = nullptr;
+	if(cards.size() > 0) {
+		card = cards.front();
+		cards.pop_front();
+	}
+	return card;
+}
+
 // returns number of cards currently in trade area
 int TradeArea::numCards()
 {
 	return cards.size();
-}
-
-list<Card*> TradeArea::getCards() {
-	return cards;
 }

@@ -33,10 +33,11 @@ public:
 	// removes a card corresponding to gemstone name from trade area
 	Card* trade(string name);
 
+	//removes a card from the trade area for discarding
+	Card* getTop();
+
 	// returns number of cards currently in trade area
 	int numCards();
-
-	list<Card*> getCards();
 
 	inline friend ostream& operator <<(ostream &out, const TradeArea& tradeArea)
 	{

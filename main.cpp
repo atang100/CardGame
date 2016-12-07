@@ -105,31 +105,34 @@ int main() {
 				TradeArea* tradeArea = table->getTradeArea();
 				DiscardPile* discardPile = table->getDiscardPile();
 
+
+
 				if (tradeArea->numCards() > 0) //if trade area not empty
 				{
-					//add cards from trade area to chains or discard them
+					for(int chainIndex;chainIndex<player->getNumChains();chainIndex++) { //for each chain type
+						string chainType = (*player)[i].getChainType();
 
-					list<Card*> tradeAreaCards = tradeArea->getCards();
+						Card* card = nullptr;
 
-					int tradeAreaSize = tradeArea->numCards();
-					for(int j=0;j<tradeAreaSize;j++) {
-						Card* currentCard = tradeAreaCards.front();
-						tradeAreaCards.pop_front();
+						do{
+							card = tradeArea->trade(chainType); //take all cards of that type from the trade area
+							try{
+								if(card != nullptr) {
+									((*player)[i]) += card; //and add to the chain
+								}
+							}catch(exception& e){} //shouldnt happen since we chain type before adding to chain, put it here anyways
 
-						//try to add it to the chain
-						bool addedToChain = false;
-						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
-							try{ //if we cant add it to the chain, an exception will be thrown
-								((*player)[i]) += currentCard;
-								addedToChain = true;
-								break; //added to chain, dont try to add to another chain
-							}catch(exception& e){}
-						}
-
-						if(!addedToChain) { //if not added to chain, keep in trade area
-							tradeAreaCards.push_back(currentCard);
-						}
+						}while(card != nullptr);
 					}
+
+					//discard all remaining cards to the discard pile
+					Card* card = nullptr;
+					do{
+						card = tradeArea->getTop();
+						if(card != nullptr) {
+							*discardPile += card; //add card to discard pile
+						}
+					}while(card != nullptr);
 				}
 
 
@@ -217,9 +220,8 @@ int main() {
 				}
 
 
-				//NEEDS TO BE FIXED
-				/*
 				//for all cards in trade area
+				/* FIX ME PLS
 				list<Card*> tradeAreaCards = tradeArea->getCards();
 				int numTradeAreaCards = tradeArea->numCards();
 
@@ -233,8 +235,7 @@ int main() {
 					if(chain == "y") {
 						//chain here
 					}
-				}
-				*/
+				} */
 
 				//draw 2 from deck, add to player's hand
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
