@@ -106,8 +106,9 @@ Hand* Player::getHand() {
 	return d_hand;
 }
 
-vector<Chain_Base*> Player::getChains() {
-	return chains;
+void Player::sellChain() {
+	*this += chains.back()->sell(); //sell chain
+	chains.pop_back();
 }
 
 // print the top in player's hand if false, other print entire hand

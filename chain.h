@@ -19,6 +19,8 @@ class Chain_Base {
 
 public:
 	friend std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase);
+	virtual int sell();
+	virtual Chain_Base& operator+=(Card* card);
 
 protected:
 	virtual void print(std::ostream& out) const = 0;

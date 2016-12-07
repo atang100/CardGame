@@ -29,7 +29,7 @@ int main() {
 	cin >> in;
 
 	if (in == "1") //new game
-	{ 
+	{
 
 		string player1Name;
 		string player2Name;
@@ -43,7 +43,7 @@ int main() {
 
 	}
 	else if (in == "2") //saved game
-	{ 
+	{
 		string saveFileName;
 
 		cout << "Save file name: ";
@@ -52,7 +52,7 @@ int main() {
 		ifstream inFile;
 		inFile.open(saveFileName);
 
-		if (!inFile) 
+		if (!inFile)
 		{
 			cerr << "Could not open the save file!" << endl;
 			return -1;
@@ -80,21 +80,21 @@ int main() {
 		cin >> pause;
 
 		if(pause == "y") //save logic
-		{ 
+		{
 
 		}
 		else //actual game logic
-		{ 
+		{
 			Player** players = table->getPlayers();
 
-			for(int i=0;i<2;i++) 
+			for(int i=0;i<2;i++)
 			{
 				Player* player = players[i];
 
 				table->print(cout); //print table, maybe add another method to make this look nicer
 
 				//can buy a chain if they have 3 coins and 2 chains
-				if(player->getNumCoins() >= 3 && player->getNumChains() == 2) 
+				if(player->getNumCoins() >= 3 && player->getNumChains() == 2)
 				{
 					//player->buyThirdChain();
 				}
@@ -105,33 +105,71 @@ int main() {
 				TradeArea* tradeArea = table->getTradeArea();
 				DiscardPile* discardPile = table->getDiscardPile();
 
-
 				if (tradeArea->numCards() > 0) //if trade area not empty
 				{
 					//add cards from trade area to chains or discard them
 
-					/* FIX THIS TOO
 					list<Card*> tradeAreaCards = tradeArea->getCards();
 
 					int tradeAreaSize = tradeArea->numCards();
 					for(int j=0;j<tradeAreaSize;j++) {
-						Card* currentCard = tradeArea->;
+						Card* currentCard = tradeAreaCards.front();
+						tradeAreaCards.pop_front();
 
-						for(auto chain : player->getChains()) {
+						//try to add it to the chain
+						bool addedToChain = false;
+						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
 							try{ //if we cant add it to the chain, an exception will be thrown
-								*chain += currentCard;
+								((*player)[i]) += currentCard;
+								addedToChain = true;
+								break; //added to chain, dont try to add to another chain
 							}catch(exception& e){}
+						}
+
+						if(!addedToChain) { //if not added to chain, keep in trade area
+							tradeAreaCards.push_back(currentCard);
+						}
+					}
+				}
+
+
+
+
+				int repCount = 0;
+				do {
+					//play topmost card from hand
+					Card* playCard = player->getHand()->play(); //get the card to play
+					bool addedToChain = false;
+					for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
+						try{
+							((*player)[i]) += playCard;
+							addedToChain = true;
+							break;
+						}catch(exception& e){}
+					}
+
+					if(!addedToChain) {
+						player->sellChain();
+						player->makeNewChain(playCard->getName()); //TODO: add function (takes card name to know what type)
+						(*player)[player->getNumChains()-1] += playCard; //add card to new chain
+					}
+
+					if(repCount == 0) {
+
+						cout << "Do you want to play the topmost card again? (y/n): " << endl;
+						string repeat;
+						cin >> repeat;
+
+						if(repeat == "n") {
+							repCount++;
 						}
 					}
 
-					*/
-				}
+					repCount++;
 
-				//play topmost card from hand
+				}while(repCount < 2); //repeat? y/n
 
-				//if end chain, delete chain, and give goins
 
-				//repeat? y/n
 
 				//show full hand & discard? y/n
 				//***** START OF DISCARD PHASE *******
@@ -139,13 +177,13 @@ int main() {
 				string discard;
 				cin >> discard;
 
-				if(discard == "y") 
+				if(discard == "y")
 				{
 					player->printHand(cout, true); //print full hand
 
 					int handSize = player->getHand()->size();
 
-					for(int displayIndex=0;displayIndex<handSize;displayIndex++) 
+					for(int displayIndex=0;displayIndex<handSize;displayIndex++)
 					{
 						cout << displayIndex << " ";
 					}
@@ -166,14 +204,14 @@ int main() {
 				}
 				//**** END OF DISCARD PHASE *****
 				//draw 3 cards from deck & put on trade area
-				for(int j=0;j<3;j++) 
+				for(int j=0;j<3;j++)
 				{
 					*tradeArea += table->drawCardFromDeck();
 				}
 
 				//while top discard pile card matches a card in the trade area
 					//draw the top card from discard pile and put in trade area
-				while(tradeArea->legal(discardPile->top())) 
+				while(tradeArea->legal(discardPile->top()))
 				{
 					*tradeArea += discardPile->pickUp();
 				}
@@ -194,15 +232,6 @@ int main() {
 
 					if(chain == "y") {
 						//chain here
-
-
-						cout << "Want to sell the chain? (y/n): ";
-						string endChain;
-						cin >> endChain;
-
-						if(endChain == "y") {
-							//sell and delete chain
-						}
 					}
 				}
 				*/
