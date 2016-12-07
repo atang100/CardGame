@@ -111,6 +111,26 @@ void Player::sellChain() {
 	chains.pop_back();
 }
 
+void Player::makeNewChain(string type) {
+	if(type == "Quartz") {
+		chains.push_back(new Chain<Quartz>());
+	}else if(type == "Hematite") {
+		chains.push_back(new Chain<Hematite>());
+	}else if(type == "Obsidian") {
+		chains.push_back(new Chain<Obsidian>());
+	}else if(type == "Malachite") {
+		chains.push_back(new Chain<Malachite>());
+	}else if(type == "Turquoise") {
+		chains.push_back(new Chain<Turquoise>());
+	}else if(type == "Ruby") {
+		chains.push_back(new Chain<Ruby>());
+	}else if(type == "Amethyst") {
+		chains.push_back(new Chain<Amethyst>());
+	}else if(type == "Emerald") {
+		chains.push_back(new Chain<Emerald>());
+	}
+}
+
 // print the top in player's hand if false, other print entire hand
 void Player::printHand(std::ostream& out, bool printFullHand)
 {

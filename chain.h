@@ -19,8 +19,10 @@ class Chain_Base {
 
 public:
 	friend std::ostream& operator<<(std::ostream& outputStream, const Chain_Base& chainBase);
-	virtual int sell();
-	virtual Chain_Base& operator+=(Card* card);
+	inline virtual int sell() {};
+	virtual Chain_Base& operator+=(Card* card){};
+
+	inline virtual ~Chain_Base(){};
 
 protected:
 	virtual void print(std::ostream& out) const = 0;
@@ -39,6 +41,12 @@ private:
 	vector<T*> chainVector;
 
 public:
+
+	inline Chain() {
+	};
+
+	inline ~Chain() {
+	};
 
 	/*
 	Line 1: Chain Card Name
@@ -69,8 +77,14 @@ public:
 	};
 
 	inline Chain<T>& operator+=(Card* card) {
+		if(dynamic_cast<T*>(card) != nullptr) {
+			chainVector.push_back(dynamic_cast<T*>(card));
+		}else{
+			throw IllegalTypeException();
+		}
 
 		//downcast
+		/*
 		Quartz* quartzCard = dynamic_cast<Quartz*>(card);
 		Hematite* hematiteCard = dynamic_cast<Hematite*>(card);
 		Obsidian* obsidianCard = dynamic_cast<Obsidian*>(card);
@@ -123,7 +137,7 @@ public:
 			}
 		}
 
-		throw IllegalTypeException();
+		throw IllegalTypeException();*/
 	};
 
 	inline int sell() {

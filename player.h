@@ -57,6 +57,8 @@ public:
 
 	void sellChain();
 
+	void makeNewChain(string);
+
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 
