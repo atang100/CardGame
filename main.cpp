@@ -74,7 +74,84 @@ int main() {
 		if(pause == "y") { //save logic
 
 		}else{ //actual game logic
-			table->print(cout);
+			Player** players = table->getPlayers();
+			for(int i=0;i<2;i++) {
+				Player* player = players[i];
+
+				table->print(cout); //print table, maybe add another method to make this look nicer
+
+				//can buy a chain if they have 3 coins and 2 chains
+				if(player->getNumCoins() >= 3 && player->getNumChains() == 2) {
+					//player->buyThirdChain();
+				}
+
+				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
+
+
+				TradeArea* tradeArea = table->getTradeArea();
+				DiscardPile* discardPile = table->getDiscardPile();
+
+				if(tradeArea->numCards() != 0) { //if trade area not empty
+					//add cards from trade area to chains or discard them
+				}
+
+				//play topmost card from hand
+
+				//if end chain, delete chain, and give goins
+
+				//repeat? y/n
+
+				//show full hand & discard? y/n
+				//***** START OF DISCARD PHASE *******
+				cout << "Do you want to discard from your hand?" << endl;
+				string discard;
+				cin >> discard;
+
+				if(discard == "y") {
+					player->printHand(cout, true); //print full hand
+
+					int handSize = player->getHand()->size();
+
+					for(int displayIndex=0;displayIndex<handSize;displayIndex++) {
+						cout << displayIndex << " ";
+					}
+					cout << endl;
+
+					cout << "Enter an index to discard: ";
+					string index;
+					cin >> index;
+
+					while(stoi(index) >= handSize) {
+						cout << "Enter an index to discard: ";
+						string index;
+						cin >> index;
+					}
+
+					Card* arbitraryCard = (*player->getHand())[stoi(index)];
+					*discardPile += arbitraryCard;
+				}
+				//**** END OF DISCARD PHASE *****
+
+				//draw 3 cards from deck & put on trade area
+				for(int j=0;j<3;j++) {
+					*tradeArea += table->drawCardFromDeck();
+				}
+
+				//while top discard pile card matches a card in the trade area
+					//draw the top card from discard pile and put in trade area
+
+				//for all cards in trade area
+					//want to chain the card? y/n
+						//y?  Chain
+						//end chain?
+							//sell and delete chain
+						//n?
+							//keep cards in trade area
+
+				//draw 2 from deck, add to player's hand
+				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
+				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
+			}
 		}
 	}
 

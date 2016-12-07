@@ -29,6 +29,8 @@ public:
 	//Return top card from player's hand (don't remove)
 	Card* top();
 
+	int size();
+
 	//Returns and removes card at index
 	Card* operator[](int);
 

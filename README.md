@@ -34,3 +34,10 @@ Compiles at least
 ### Pseudo Code (In-progress)
 - 3 txt files will be needed: player1, player2, and game
 - need to implement game loop
+
+
+
+###TODO:
+
+-need destructors
+-drawing from deck not checked for nullptr/empty deck

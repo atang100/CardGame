@@ -52,6 +52,9 @@ public:
 	//for example, after they draw a card from the deck
 	void addCardToHand(Card*);
 
+	//need to get hand for discarding purposes
+	Hand* getHand();
+
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 

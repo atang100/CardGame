@@ -101,6 +101,10 @@ void Player::addCardToHand(Card* card) {
 	*d_hand += card;
 }
 
+Hand* Player::getHand() {
+	return d_hand;
+}
+
 // print the top in player's hand if false, other print entire hand
 void Player::printHand(std::ostream& out, bool printFullHand)
 {

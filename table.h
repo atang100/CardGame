@@ -5,6 +5,7 @@
 #include "discard_pile.h"
 #include "trade_area.h"
 #include "deck.h"
+#include "gemstones.h"
 
 using std::string;
 using std::ostream;
@@ -15,10 +16,9 @@ using std::istream;
 
 class Table {
 
-protected:
-
 	Player* player1;
 	Player* player2;
+	Player* players[2];
 	DiscardPile* discardPile;
 	Deck deck;
 	TradeArea* tradeArea;
@@ -28,6 +28,15 @@ public:
 	Table(string, string);
 
 	Table(std::istream&, CardFactory*);
+
+	//easier to loop through players as an array in main game loop
+	Player** getPlayers();
+
+	Card* drawCardFromDeck();
+
+	TradeArea* getTradeArea();
+
+	DiscardPile* getDiscardPile();
 
 	// returns true when a player has won
 	bool win(std::string& playerName);

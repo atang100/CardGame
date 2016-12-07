@@ -23,6 +23,9 @@ Table::Table(string player1Name, string player2Name)
 	player1 = new Player(player1Name);
 	player2 = new Player(player2Name);
 
+	players[0] = player1;
+	players[1] = player2;
+
 	for(int i=0;i<5;i++) { //each player draws 5 cards to start
 		Card* drawnCard = deck.draw(); //draw then add to player 1 hand
 		player1->addCardToHand(drawnCard);
@@ -62,6 +65,26 @@ Table::Table(std::istream& inputStream, CardFactory* cardFactory)
 	*tradeArea = TradeArea(inputStream, cardFactory);
 	*player1 = Player(inputStream, cardFactory);
 	*player2 = Player(inputStream, cardFactory);
+	players[0] = player1;
+	players[1] = player2;
+}
+
+
+Player** Table::getPlayers() {
+	return players;
+}
+
+
+Card* Table::drawCardFromDeck() {
+	return deck.draw();
+}
+
+TradeArea* Table::getTradeArea() {
+	return tradeArea;
+}
+
+DiscardPile* Table::getDiscardPile() {
+	return discardPile;
 }
 
 // returns true when a player has won

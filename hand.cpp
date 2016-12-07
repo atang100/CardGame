@@ -66,6 +66,10 @@ Card* Hand::top() {
 	return nullptr;
 }
 
+int Hand::size() {
+	return handQueue.size();
+}
+
 //Returns and removes card at index
 Card* Hand::operator[](int index) {
 	Card* returnCard = nullptr;
