@@ -7,11 +7,14 @@
 /*   Table        */
 /******************/
 
+
+//This constructor is called only when starting a new game
 Table::Table(string player1Name, string player2Name)
 {
 	CardFactory* cardFactory = CardFactory::getFactory();
 
-	deck = cardFactory->getDeck();
+	deck = cardFactory->getDeck(); //generate a deck
+	deck.shuffle(); //shuffle deck
 
 	discardPile = new DiscardPile();
 
@@ -19,6 +22,13 @@ Table::Table(string player1Name, string player2Name)
 
 	player1 = new Player(player1Name);
 	player2 = new Player(player2Name);
+
+	for(int i=0;i<5;i++) { //each player draws 5 cards to start
+		Card* drawnCard = deck.draw(); //draw then add to player 1 hand
+		player1->addCardToHand(drawnCard);
+		drawnCard = deck.draw(); //draw then add to player 2 hand
+		player2->addCardToHand(drawnCard);
+	}
 }
 
 /*

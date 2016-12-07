@@ -48,24 +48,14 @@ public:
 	// add an empty third chain for 2 coins
 	void buyThirdChain();
 
+	//added this to facilitate adding a card to the players Hand
+	//for example, after they draw a card from the deck
+	void addCardToHand(Card*);
+
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 
-	inline friend ostream & operator <<(ostream& outputStream, const Player& player)
-	{
-		outputStream << player.d_name << endl;
-		outputStream << player.d_coins << endl;
-		outputStream << player.maxNumChains << endl;
-
-		for (auto chain : player.chains) {
-			outputStream << *chain;
-		}
-
-		outputStream << endl;
-		outputStream << *player.d_hand << endl;
-
-		return outputStream;
-	};
+	friend ostream & operator <<(ostream& outputStream, const Player& player);
 };
 
 #endif

@@ -86,3 +86,19 @@ Card* Hand::operator[](int index) {
 
 	return returnCard;
 }
+
+
+std::ostream& operator<<(std::ostream& outputStream, Hand& hand)
+{
+	int queueSize = hand.handQueue.size();
+
+	for(int i=0; i<queueSize; i++)
+	{
+		Card* card = hand.handQueue.front();
+		hand.handQueue.pop();
+		outputStream << *card << " ";
+		hand.handQueue.push(card);
+	}
+
+	return outputStream;
+}

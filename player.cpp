@@ -97,6 +97,10 @@ void Player::buyThirdChain()
 	}
 }
 
+void Player::addCardToHand(Card* card) {
+	*d_hand += card;
+}
+
 // print the top in player's hand if false, other print entire hand
 void Player::printHand(std::ostream& out, bool printFullHand)
 {
@@ -105,4 +109,19 @@ void Player::printHand(std::ostream& out, bool printFullHand)
 	}else{
 		out << *d_hand->top();
 	}
+}
+
+std::ostream& operator <<(std::ostream& outputStream, const Player& player)
+{
+	outputStream << player.d_name << endl;
+	outputStream << player.d_coins << endl;
+	outputStream << player.maxNumChains << endl;
+
+	for (auto chain : player.chains) {
+		outputStream << *chain;
+	}
+
+	outputStream << *player.d_hand << endl;
+
+	return outputStream;
 }
