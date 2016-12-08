@@ -20,23 +20,26 @@ TradeArea::TradeArea()
 
 TradeArea::TradeArea(std::istream& inputStream, CardFactory* cardFactory)
 {
+	char c[256];
+	inputStream.getline(c, 256);
+	string line(c);
 
-	string line;
-	inputStream >> line;
-
-	//Makes it easy to loop through line by ' ' delimiter.
-	istringstream gemstone(line);
-
-	while (gemstone)
+	if (!line.empty())
 	{
-		string gemstoneName;
-		gemstone >> gemstoneName;
+		//Makes it easy to loop through line by ' ' delimiter.
+		istringstream gemstone(line);
 
-		Card* card = cardFactory->getCard(gemstoneName);
-
-		if (card != nullptr)
+		while (gemstone)
 		{
-			cards.push_back(card);
+			string gemstoneName;
+			gemstone >> gemstoneName;
+
+			Card* card = cardFactory->getCard(gemstoneName);
+
+			if (card != nullptr)
+			{
+				cards.push_back(card);
+			}
 		}
 	}
 }

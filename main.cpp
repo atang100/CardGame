@@ -14,6 +14,7 @@ using std::cin;
 using std::cout;
 using std::cerr;
 using std::ifstream;
+using std::ofstream;
 
 int main() {
 
@@ -44,13 +45,8 @@ int main() {
 	}
 	else if (in == "2") //saved game
 	{
-		string saveFileName;
-
-		cout << "Save file name: ";
-		cin >> saveFileName;
-
 		ifstream inFile;
-		inFile.open(saveFileName);
+		inFile.open("save_data.txt");
 
 		if (!inFile)
 		{
@@ -81,7 +77,10 @@ int main() {
 
 		if(pause == "y") //save logic
 		{
-
+			std::ofstream ofs;
+			ofs.open("save_data.txt", std::ofstream::out | std::ofstream::trunc); //clear text file
+			table->print(ofs);
+			ofs.close();
 		}
 		else //actual game logic
 		{
@@ -96,7 +95,13 @@ int main() {
 				//can buy a chain if they have 3 coins and 2 chains
 				if(player->getNumCoins() >= 3 && player->getNumChains() == 2)
 				{
-					//player->buyThirdChain();
+					string purchase;
+					cout << "Purchase another chain (y/n): ";
+					
+					if (purchase == "y")
+					{
+						//player->buyThirdChain();
+					}
 				}
 
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
@@ -104,8 +109,6 @@ int main() {
 
 				TradeArea* tradeArea = table->getTradeArea();
 				DiscardPile* discardPile = table->getDiscardPile();
-
-
 
 				if (tradeArea->numCards() > 0) //if trade area not empty
 				{

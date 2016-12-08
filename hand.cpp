@@ -22,22 +22,26 @@ constructor can be used.
 
 Hand::Hand(std::istream& inputStream, CardFactory* cardFactory)
 {
-	string line;
-	inputStream >> line;
+	char c[256];
+	inputStream.getline(c, 256);
+	string line(c);
 
-	//Makes it easy to loop through line by ' ' delimiter.
-	istringstream gemstone(line);
-
-	while (gemstone)
+	if (!line.empty())
 	{
-		string gemstoneName;
-		gemstone >> gemstoneName;
+		//Makes it easy to loop through line by ' ' delimiter.
+		istringstream gemstone(line);
 
-		Card* card = cardFactory->getCard(gemstoneName);
-
-		if (card != nullptr)
+		while (gemstone)
 		{
-			handQueue.push(card);
+			string gemstoneName;
+			gemstone >> gemstoneName;
+
+			Card* card = cardFactory->getCard(gemstoneName);
+
+			if (card != nullptr)
+			{
+				handQueue.push(card);
+			}
 		}
 	}
 }

@@ -87,6 +87,8 @@ Card* CardFactory::getCard(string type) {
 		card = new Amethyst();
 	}else if(type == "E" || type == "Emerald") {
 		card = new Emerald();
+	}else{
+		return nullptr;
 	}
 
 	cards.push_back(card); //add the card to the list of cards

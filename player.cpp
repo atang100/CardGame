@@ -28,18 +28,16 @@ Line 5: Hand
 
 Player::Player(istream& inputStream, CardFactory* cardFactory)
 {
-	string s_coins;
-	string s_maxNumChains;
+	char c[256];
+	inputStream.getline(c, 256);
 
-	inputStream >> d_name;
-	inputStream >> s_coins;
+	string name(c);
+	string s_coins(c);
+	string s_maxNumChains(c);
 
+	d_name = name;
 	d_coins = atoi(s_coins.c_str());
-
-	inputStream >> s_maxNumChains;
-
 	maxNumChains = atoi(s_maxNumChains.c_str());
-
 
 	//maxNumChains can take a value of 2 or 3.
 	//TODO this needs to set the type of the chain as well
@@ -151,7 +149,7 @@ std::ostream& operator <<(std::ostream& outputStream, const Player& player)
 		outputStream << *chain;
 	}
 
-	outputStream << *player.d_hand << endl;
+	outputStream << *player.d_hand;
 
 	return outputStream;
 }
