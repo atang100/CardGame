@@ -29,10 +29,14 @@ Line 5: Hand
 Player::Player(istream& inputStream, CardFactory* cardFactory)
 {
 	char c[256];
-	inputStream.getline(c, 256);
 
+	inputStream.getline(c, 256);
 	string name(c);
+
+	inputStream.getline(c, 256);
 	string s_coins(c);
+
+	inputStream.getline(c, 256);
 	string s_maxNumChains(c);
 
 	d_name = name;
@@ -48,7 +52,7 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 		//chains.push_back(chain);
 	}
 
-	*d_hand = Hand(inputStream, cardFactory);
+	d_hand = new Hand(inputStream, cardFactory);
 }
 
 // get the name of the player
@@ -146,7 +150,7 @@ std::ostream& operator <<(std::ostream& outputStream, const Player& player)
 	outputStream << player.maxNumChains << endl;
 
 	for (auto chain : player.chains) {
-		outputStream << *chain;
+		outputStream << *chain << endl;
 	}
 
 	outputStream << *player.d_hand;

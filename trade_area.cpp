@@ -36,7 +36,7 @@ TradeArea::TradeArea(std::istream& inputStream, CardFactory* cardFactory)
 
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card != nullptr)
+			if (card)
 			{
 				cards.push_back(card);
 			}

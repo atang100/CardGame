@@ -40,7 +40,7 @@ Deck::Deck(istream& inputStream, CardFactory* cardFactory)
 
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card != nullptr)
+			if (card)
 			{
 				this->push_back(card);
 			}

@@ -41,7 +41,7 @@ DiscardPile::DiscardPile(std::istream& inputStream, CardFactory* cardFactory)
 
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card != nullptr)
+			if (card)
 			{
 				discardPileVector.push_back(card);
 			}

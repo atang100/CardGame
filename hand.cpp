@@ -35,10 +35,9 @@ Hand::Hand(std::istream& inputStream, CardFactory* cardFactory)
 		{
 			string gemstoneName;
 			gemstone >> gemstoneName;
-
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card != nullptr)
+			if (card)
 			{
 				handQueue.push(card);
 			}

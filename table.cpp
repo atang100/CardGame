@@ -61,10 +61,12 @@ Line 13: Player 2 Hand
 Table::Table(std::istream& inputStream, CardFactory* cardFactory)
 {
 	deck = Deck(inputStream, cardFactory);
-	*discardPile = DiscardPile(inputStream, cardFactory);
-	*tradeArea = TradeArea(inputStream, cardFactory);
-	*player1 = Player(inputStream, cardFactory);
-	*player2 = Player(inputStream, cardFactory);
+	discardPile = new DiscardPile(inputStream, cardFactory);
+	tradeArea = new TradeArea(inputStream, cardFactory);
+
+	player1 = new Player(inputStream, cardFactory);
+	player2 = new Player(inputStream, cardFactory);
+
 	players[0] = player1;
 	players[1] = player2;
 }
@@ -113,8 +115,12 @@ bool Table::win(std::string& playerName)
 void Table::print(std::ostream& outputStream)
 {
 	outputStream << deck << endl; //print deck
+
 	discardPile->print(outputStream); //print discard pile
+	outputStream << endl;
+
 	outputStream << *tradeArea << endl; //print trade area
+
 	outputStream << *player1 << endl; //print player 1
 	outputStream << *player2 << endl; //print player 2
 }
