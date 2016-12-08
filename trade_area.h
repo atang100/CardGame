@@ -36,6 +36,9 @@ public:
 	//removes a card from the trade area for discarding
 	Card* getTop();
 
+	//returns a pointer to the card at a particular index
+	Card* peek(int);
+
 	// returns number of cards currently in trade area
 	int numCards();
 

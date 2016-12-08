@@ -95,6 +95,17 @@ Card* TradeArea::getTop() {
 	return card;
 }
 
+Card* TradeArea::peek(int i) {
+	Card* card = nullptr;
+
+	if(cards.size() > 0 && i < cards.size()) {
+		std::list<Card*>::iterator it = cards.begin();
+		std::advance(it, i);
+		card = *it;
+	}
+	return card;
+}
+
 // returns number of cards currently in trade area
 int TradeArea::numCards()
 {

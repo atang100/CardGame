@@ -97,7 +97,7 @@ int main() {
 				{
 					string purchase;
 					cout << "Purchase another chain (y/n): ";
-					
+
 					if (purchase == "y")
 					{
 						//player->buyThirdChain();
@@ -155,10 +155,10 @@ int main() {
 					}
 
 					if(!addedToChain) {
-						player->sellChain();
-						player->makeNewChain(playCard->getName()); //TODO: add function (takes card name to know what type)
+						player->sellChain(); //TODO: make this add cards to discard pile
+						player->makeNewChain(playCard->getName());
 						(*player)[player->getNumChains()-1] += playCard; //add card to new chain
-					}
+					} //TODO: if the user successfully plays the card, should they be given the option to sell the chain?
 
 					if(repCount == 0) {
 
@@ -223,22 +223,35 @@ int main() {
 				}
 
 
-				//for all cards in trade area
-				/* FIX ME PLS
-				list<Card*> tradeAreaCards = tradeArea->getCards();
-				int numTradeAreaCards = tradeArea->numCards();
 
-				for(int tradeCardIndex=0;tradeCardIndex<numTradeAreaCards;tradeCardIndex++) {
-					Card* tradeAreaCard = tradeAreaCards[tradeCardIndex];
+				if (tradeArea->numCards() > 0) //if trade area not empty
+				{
+					int maxIndex = tradeArea->numCards();
 
-					cout << "Do you want to chain this card? (y/n): ";
-					string chain;
-					cin >> chain;
+					for(int tradeAreaIndex=0; tradeAreaIndex<maxIndex;tradeAreaIndex++) {
+						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
+							string chainType = (*player)[i].getChainType();
 
-					if(chain == "y") {
-						//chain here
+							Card* peekedCard = tradeArea->peek(tradeAreaIndex);
+							if(chainType == peekedCard->getName()) { //card is same type as chain
+								cout << "Do you want to chain the card " << *peekedCard << "? (y/n): ";
+								string shouldChain;
+								cin >> shouldChain;
+
+								if(shouldChain == "y") { //chain if user wants to chain
+									(*player)[i] += tradeArea->trade(chainType);
+									maxIndex--;
+									tradeAreaIndex--; //adjust loop for removed card
+
+									//TODO: ask if user wants to sell chain
+								}
+								break; //dont try to add to more than one chain
+							}
+						}
 					}
-				} */
+				}
+
+
 
 				//draw 2 from deck, add to player's hand
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
