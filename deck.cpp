@@ -1,6 +1,7 @@
 #include <algorithm>    // std::random_shuffle
 #include <iostream>
 #include <sstream>
+#include <chrono>
 
 #include "deck.h"
 
@@ -64,7 +65,8 @@ void Deck::push_back(Card* card) {
 }
 
 void Deck::shuffle() {
-	std::random_shuffle(this->begin(), this->end());
+	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+	std::shuffle(this->begin(), this->end(), std::default_random_engine(seed));
 }
 
 ostream& operator <<(ostream &out, const Deck& deck) {

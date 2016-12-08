@@ -98,7 +98,7 @@ int main() {
 				table->print(cout); //print table
 
 				//can buy a chain if they have 3 coins and 2 chains
-				if(player->getNumCoins() >= 3 && player->getNumChains() == 2)
+				if(player->getNumCoins() >= 3 && player->getMaxNumChains() == 2)
 				{
 					string purchase;
 					cout << "Purchase another chain (y/n): ";
