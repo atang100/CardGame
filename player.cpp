@@ -48,8 +48,6 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 	int num_chains = atoi(s_num_chains.c_str());
 
 	//maxNumChains can take a value of 2 or 3.
-	//TODO this needs to set the type of the chain as well
-	//cannot create a chain of Card*
 	for (int i = 0; i < num_chains; i++)
 	{
 		inputStream.getline(c, 256);
@@ -149,6 +147,14 @@ void Player::sellChain(DiscardPile& discardPile) {
 	*this += chains.back()->sell(); //sell chain
 	chains.back()->moveToDiscardPile(discardPile);
 	chains.pop_back();
+}
+
+void Player::sellChain(int index, DiscardPile& discardPile) {
+	if(index >= 0 && index < chains.size()) { //check valid index
+		*this += chains[index]->sell();
+		chains[index]->moveToDiscardPile(discardPile);
+		chains.erase(chains.begin()+index);
+	}
 }
 
 void Player::makeNewChain(string type) {

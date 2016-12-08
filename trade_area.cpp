@@ -54,10 +54,12 @@ TradeArea& TradeArea::operator+=(Card* card)
 // returns true if card can be legally added to trade area
 bool TradeArea::legal(Card* card)
 {
-	for (std::list<Card*>::const_iterator iterator = cards.begin(), end = cards.end(); iterator != end; ++iterator) {
-		if (card->getName() == (*iterator)->getName())
-		{
-			return true;
+	if(card != nullptr) {
+		for (std::list<Card*>::const_iterator iterator = cards.begin(), end = cards.end(); iterator != end; ++iterator) {
+			if (card->getName() == (*iterator)->getName())
+			{
+				return true;
+			}
 		}
 	}
 	return false;

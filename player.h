@@ -58,6 +58,8 @@ public:
 
 	void sellChain(DiscardPile& discardPile);
 
+	void sellChain(int, DiscardPile&);
+
 	void makeNewChain(string);
 
 	// print the top in player's hand if false, other print entire hand

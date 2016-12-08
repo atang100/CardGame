@@ -90,6 +90,8 @@ int main() {
 			{
 				Player* player = players[i];
 
+				cout << "***** " << player->getName() << "'s turn" << " *****" << endl;
+
 				table->print(cout); //print table, maybe add another method to make this look nicer
 
 				//can buy a chain if they have 3 coins and 2 chains
@@ -100,20 +102,24 @@ int main() {
 
 					if (purchase == "y")
 					{
-						//player->buyThirdChain();
+						player->buyThirdChain();
 					}
+				}else{
+					cout << "Not enough money to buy a chain, skipping." << endl;
 				}
 
+				cout << "Drawing card from deck" << endl;
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
 
 
 				TradeArea* tradeArea = table->getTradeArea();
 				DiscardPile* discardPile = table->getDiscardPile();
 
+				cout << "Moving cards from trade area to chains." << endl;
 				if (tradeArea->numCards() > 0) //if trade area not empty
 				{
 					for(int chainIndex;chainIndex<player->getNumChains();chainIndex++) { //for each chain type
-						string chainType = (*player)[i].getChainType();
+						string chainType = (*player)[chainIndex].getChainType();
 
 						Card* card = nullptr;
 
@@ -121,7 +127,7 @@ int main() {
 							card = tradeArea->trade(chainType); //take all cards of that type from the trade area
 							try{
 								if(card != nullptr) {
-									((*player)[i]) += card; //and add to the chain
+									((*player)[chainIndex]) += card; //and add to the chain
 								}
 							}catch(exception& e){} //shouldnt happen since we chain type before adding to chain, put it here anyways
 
@@ -144,19 +150,25 @@ int main() {
 				int repCount = 0;
 				do {
 					//play topmost card from hand
+					cout << "Playing top card" << endl;
 					Card* playCard = player->getHand()->play(); //get the card to play
 					bool addedToChain = false;
 					for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
 						try{
-							((*player)[i]) += playCard;
+							((*player)[chainIndex]) += playCard;
 							addedToChain = true;
 							break;
 						}catch(exception& e){}
 					}
 
+
+					//couldnt add to chain, so we either need to sell a chain to make room
+					//or create a new chain if there is space to do so
 					if(!addedToChain) {
-						player->sellChain(*discardPile); //TODO: make this add cards to discard pile
-						player->makeNewChain(playCard->getName());
+						if(player->getNumChains() >= player->getMaxNumChains()) { //already at max number of chains, so we need to sell
+							player->sellChain(*discardPile);
+						}
+						player->makeNewChain(playCard->getName()); //make a new chain
 						(*player)[player->getNumChains()-1] += playCard; //add card to new chain
 					} //TODO: if the user successfully plays the card, should they be given the option to sell the chain?
 
@@ -185,8 +197,11 @@ int main() {
 
 				if(discard == "y")
 				{
+					cout << "Hand:  ";
 					player->printHand(cout, true); //print full hand
 
+					cout << endl;
+					cout << "Index: ";
 					int handSize = player->getHand()->size();
 
 					for(int displayIndex=0;displayIndex<handSize;displayIndex++)
@@ -210,6 +225,7 @@ int main() {
 				}
 				//**** END OF DISCARD PHASE *****
 				//draw 3 cards from deck & put on trade area
+				cout << "Drawing 3 cards to put on trade area." << endl;
 				for(int j=0;j<3;j++)
 				{
 					*tradeArea += table->drawCardFromDeck();
@@ -217,6 +233,7 @@ int main() {
 
 				//while top discard pile card matches a card in the trade area
 					//draw the top card from discard pile and put in trade area
+				cout << "Adding cards from discard pile to trade area." << endl;
 				while(tradeArea->legal(discardPile->top()))
 				{
 					*tradeArea += discardPile->pickUp();
@@ -228,26 +245,32 @@ int main() {
 				{
 					int maxIndex = tradeArea->numCards();
 
-					for(int tradeAreaIndex=0; tradeAreaIndex<maxIndex;tradeAreaIndex++) 
+					for(int tradeAreaIndex=0; tradeAreaIndex<maxIndex;tradeAreaIndex++)
 					{
-						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) 
+						for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++)
 						{
-							string chainType = (*player)[i].getChainType();
+							string chainType = (*player)[chainIndex].getChainType();
 							Card* peekedCard = tradeArea->peek(tradeAreaIndex);
 
 							if(chainType == peekedCard->getName()) //card is same type as chain
-							{ 
+							{
 								cout << "Do you want to chain the card " << *peekedCard << "? (y/n): ";
 								string shouldChain;
 								cin >> shouldChain;
 
 								if(shouldChain == "y") //chain if user wants to chain
 								{
-									(*player)[i] += tradeArea->trade(chainType);
+									(*player)[chainIndex] += tradeArea->trade(chainType);
 									maxIndex--;
 									tradeAreaIndex--; //adjust loop for removed card
 
-									//TODO: ask if user wants to sell chain
+									cout << "Do you want to sell this chain ( " << (*player)[chainIndex] << " )? (y/n): ";
+									string sellChain;
+									cin >> sellChain;
+
+									if(sellChain == "y") {
+										player->sellChain(chainIndex, *discardPile);
+									}
 								}
 								break; //dont try to add to more than one chain
 							}
@@ -256,7 +279,7 @@ int main() {
 				}
 
 
-
+				cout << "Drawing two cards to player's hand." <<endl;
 				//draw 2 from deck, add to player's hand
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
 				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
