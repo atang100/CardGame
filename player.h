@@ -65,6 +65,9 @@ public:
 	// print the top in player's hand if false, other print entire hand
 	void printHand(std::ostream&, bool);
 
+	//print player but make it nice to read (useful for main loop)
+	void prettyPrint(std::ostream&);
+
 	friend ostream & operator <<(ostream& outputStream, const Player& player);
 };
 

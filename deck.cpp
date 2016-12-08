@@ -51,9 +51,11 @@ Deck::Deck(istream& inputStream, CardFactory* cardFactory)
 // returns and removes the card at the top of the deck
 Card* Deck::draw()
 {
-	Card* card = this->back();
-	this->pop_back();
-
+	Card* card = nullptr;
+	if(this->size() > 0) {
+		card = this->back();
+		this->pop_back();
+	}
 	return card;
 }
 

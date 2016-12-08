@@ -75,6 +75,7 @@ Card* TradeArea::trade(string name)
 		if ((*iterator)->getName() == name)
 		{
 			card = *iterator;
+			break;
 		}
 	}
 

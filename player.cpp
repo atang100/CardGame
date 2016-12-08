@@ -35,12 +35,15 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 
 	inputStream.getline(c, 256); //coin
 	string s_coins(c);
+	s_coins = s_coins.substr(7);
 
 	inputStream.getline(c, 256); //max chains
 	string s_maxNumChains(c);
+	s_maxNumChains = s_maxNumChains.substr(12);
 
 	inputStream.getline(c, 256); //current number of chains
 	string s_num_chains(c);
+	s_num_chains =  s_num_chains.substr(8);
 
 	d_name = name;
 	d_coins = atoi(s_coins.c_str());
@@ -190,15 +193,15 @@ void Player::printHand(std::ostream& out, bool printFullHand)
 std::ostream& operator <<(std::ostream& outputStream, const Player& player)
 {
 	outputStream << player.d_name << endl;
-	outputStream << player.d_coins << endl;
-	outputStream << player.maxNumChains << endl;
-	outputStream << player.chains.size() << endl;
+	outputStream << "Coins: " << player.d_coins << endl;
+	outputStream << "Max_Chains: " << player.maxNumChains << endl;
+	outputStream << "Chains: " << player.chains.size() << endl;
 
 	for (auto chain : player.chains) {
 		outputStream << *chain << endl;
 	}
 
-	outputStream << *player.d_hand;
+	outputStream << "Hand: " << *player.d_hand;
 
 	return outputStream;
 }

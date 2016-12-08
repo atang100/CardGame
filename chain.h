@@ -39,7 +39,6 @@ template <class T>
 class Chain : public Chain_Base {
 
 private:
-	string chainCardName;
 	vector<T*> chainVector;
 
 public:
@@ -54,7 +53,7 @@ public:
 	Line 1: Chain Card Name
 	Line 2: List of Cards
 	*/
-	inline Chain(std::istream& inputStream, CardFactory* cardFactory) 
+	inline Chain(std::istream& inputStream, CardFactory* cardFactory)
 	{
 		char c[256];
 		inputStream.getline(c, 256);
@@ -70,7 +69,7 @@ public:
 
 			Card* card = cardFactory->getCard(gemstoneName);
 
-			if (card)
+			if(card)
 			{
 				*this += card;
 			}
@@ -83,64 +82,6 @@ public:
 		}else{
 			throw IllegalTypeException();
 		}
-
-		return *this;
-
-		//downcast
-		/*
-		Quartz* quartzCard = dynamic_cast<Quartz*>(card);
-		Hematite* hematiteCard = dynamic_cast<Hematite*>(card);
-		Obsidian* obsidianCard = dynamic_cast<Obsidian*>(card);
-		Malachite* malachiteCard = dynamic_cast<Malachite*>(card);
-		Turquoise* turquoiseCard = dynamic_cast<Turquoise*>(card);
-		Ruby* rubyCard = dynamic_cast<Ruby*>(card);
-		Amethyst* amethystCard = dynamic_cast<Amethyst*>(card);
-		Emerald* emeraldCard = dynamic_cast<Emerald*>(card);
-
-		//nullptr means ivalid cast
-		if(quartzCard != nullptr) {
-			if(std::is_same<T, Quartz>::value) {
-				chainVector.push_back(quartzCard);
-				return *this;
-			}
-		}else if(hematiteCard != nullptr) {
-			if(std::is_same<T, Hematite>::value) {
-				chainVector.push_back(hematiteCard);
-				return *this;
-			}
-		}else if(obsidianCard != nullptr) {
-			if(std::is_same<T, Obsidian>::value) {
-				chainVector.push_back(obsidianCard);
-				return *this;
-			}
-		}else if(malachiteCard != nullptr) {
-			if(std::is_same<T, Malachite>::value) {
-				chainVector.push_back(malachiteCard);
-				return *this;
-			}
-		}else if(turquoiseCard != nullptr) {
-			if(std::is_same<T, Turquoise>::value) {
-				chainVector.push_back(turquoiseCard);
-				return *this;
-			}
-		}else if(rubyCard != nullptr) {
-			if(std::is_same<T, Ruby>::value) {
-				chainVector.push_back(rubyCard);
-				return *this;
-			}
-		}else if(amethystCard != nullptr) {
-			if(std::is_same<T, Amethyst>::value) {
-				chainVector.push_back(amethystCard);
-				return *this;
-			}
-		}else if(emeraldCard != nullptr) {
-			if(std::is_same<T, Emerald>::value) {
-				chainVector.push_back(emeraldCard);
-				return *this;
-			}
-		}
-
-		throw IllegalTypeException();*/
 	};
 
 	inline int sell() {
@@ -196,14 +137,12 @@ public:
 
 	inline void print(std::ostream& outputStream) const
 	{
-		outputStream << chainCardName << endl;
+		outputStream << chainVector.front()->getName();
 
 		for(auto card : chainVector)
 		{
 			outputStream << " " << *card;
 		}
-
-		outputStream << endl;
 	}
 };
 

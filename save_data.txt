@@ -1,13 +1,17 @@
-Q Q M O E E H R H O M O H T R O A M E Q Q O H H A Q Q A R Q Q O O H A M H Q T Q T E Q A H T R R H T M H H H O A R T R M E T M Q Q Q H O T T T Q R O A O O R M M Q O M O Q M E O Q T O M T Q 
-
-
-Andy
-0
-2
-0
-A H H H M 
-Jordan
-0
-2
-0
-Q H M H R 
+Deck: A O Q T H H Q H H E M O R Q T M M Q H O A R M Q Q O H M M M H A Q T Q R T E Q H M R E T R R T Q A O R H O O Q M O E R T H M Q O O T Q H H Q H M T H R O O Q A H H T 
+Discard Pile: Q A O O M 
+Trade Area: A O R 
+Mr_luo
+Coins: 0
+Max_Chains: 2
+Chains: 2
+Hematite H
+Emerald E
+Hand: M Q H Q A 
+Mr_tang
+Coins: 0
+Max_Chains: 2
+Chains: 2
+Malachite M
+Quartz Q
+Hand: O T E Q T 

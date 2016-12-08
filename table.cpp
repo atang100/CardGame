@@ -112,13 +112,14 @@ bool Table::win(std::string& playerName)
 // prints the complete table with all the contents
 void Table::print(std::ostream& outputStream)
 {
-	outputStream << deck << endl; //print deck
-
-	discardPile->print(outputStream); //print discard pile
+	outputStream << "Deck: " << deck << endl;
+	outputStream << "Discard Pile: ";
+	discardPile->print(outputStream);
 	outputStream << endl;
 
-	outputStream << *tradeArea << endl; //print trade area
+	outputStream << "Trade Area: ";
+	outputStream << *tradeArea << endl;
 
-	outputStream << *player1 << endl; //print player 1
-	outputStream << *player2 << endl; //print player 2
+	outputStream << *player1 << endl;
+	outputStream << *player2 << endl;
 }

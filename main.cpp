@@ -81,6 +81,7 @@ int main() {
 			ofs.open("save_data.txt", std::ofstream::out | std::ofstream::trunc); //clear text file
 			table->print(ofs);
 			ofs.close();
+			return 0;
 		}
 		else //actual game logic
 		{
@@ -90,9 +91,9 @@ int main() {
 			{
 				Player* player = players[i];
 
-				cout << "***** " << player->getName() << "'s turn" << " *****" << endl;
+				cout << "\n\n\n\n***** " << player->getName() << "'s turn" << " *****" << endl;
 
-				table->print(cout); //print table, maybe add another method to make this look nicer
+				table->print(cout); //print table
 
 				//can buy a chain if they have 3 coins and 2 chains
 				if(player->getNumCoins() >= 3 && player->getNumChains() == 2)
@@ -108,9 +109,10 @@ int main() {
 					cout << "Not enough money to buy a chain, skipping." << endl;
 				}
 
-				cout << "Drawing card from deck" << endl;
-				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
-
+				cout << "Drawing card from deck: ";
+				Card* cardDrawnFromDeck = table->drawCardFromDeck();
+				player->addCardToHand(cardDrawnFromDeck); //draw from deck and add card to hand
+				cout << *cardDrawnFromDeck << endl;
 
 				TradeArea* tradeArea = table->getTradeArea();
 				DiscardPile* discardPile = table->getDiscardPile();
@@ -150,8 +152,9 @@ int main() {
 				int repCount = 0;
 				do {
 					//play topmost card from hand
-					cout << "Playing top card" << endl;
+					cout << "Playing top card from hand: ";
 					Card* playCard = player->getHand()->play(); //get the card to play
+					cout << *playCard << endl;
 					bool addedToChain = false;
 					for(int chainIndex=0;chainIndex<player->getNumChains();chainIndex++) {
 						try{
@@ -170,11 +173,11 @@ int main() {
 						}
 						player->makeNewChain(playCard->getName()); //make a new chain
 						(*player)[player->getNumChains()-1] += playCard; //add card to new chain
-					} //TODO: if the user successfully plays the card, should they be given the option to sell the chain?
+					}
 
 					if(repCount == 0) {
 
-						cout << "Do you want to play the topmost card again? (y/n): " << endl;
+						cout << "Do you want to play the topmost card again? (y/n): ";
 						string repeat;
 						cin >> repeat;
 
@@ -191,7 +194,7 @@ int main() {
 
 				//show full hand & discard? y/n
 				//***** START OF DISCARD PHASE *******
-				cout << "Do you want to discard from your hand? (y/n): " << endl;
+				cout << "Do you want to discard from your hand? (y/n): ";
 				string discard;
 				cin >> discard;
 
@@ -222,6 +225,10 @@ int main() {
 
 					Card* arbitraryCard = (*player->getHand())[stoi(index)];
 					*discardPile += arbitraryCard;
+
+					cout << "Hand after discard: ";
+					player->printHand(cout, true);
+					cout << endl;
 				}
 				//**** END OF DISCARD PHASE *****
 				//draw 3 cards from deck & put on trade area
@@ -278,11 +285,25 @@ int main() {
 					}
 				}
 
-
-				cout << "Drawing two cards to player's hand." <<endl;
 				//draw 2 from deck, add to player's hand
-				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
-				player->addCardToHand(table->drawCardFromDeck()); //draw from deck and add card to hand
+				Card* drawnCard1 = table->drawCardFromDeck();
+				Card* drawnCard2 = table->drawCardFromDeck();
+
+				if(drawnCard1) {
+					player->addCardToHand(drawnCard1); //draw from deck and add card to hand
+				}
+
+				if(drawnCard2) {
+					player->addCardToHand(drawnCard2); //draw from deck and add card to hand
+				}
+
+				if(drawnCard1 && drawnCard2) {
+					cout << "Drawing two cards to player's hand ( ";
+					cout << *drawnCard1 << *drawnCard2 << " )" << endl;
+					cout << "Hand: ";
+					player->printHand(cout, true);
+					cout << endl;
+				}
 			}
 		}
 	}
