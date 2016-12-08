@@ -93,6 +93,12 @@ Player::Player(istream& inputStream, CardFactory* cardFactory)
 	d_hand = new Hand(inputStream, cardFactory);
 }
 
+Player::~Player() {
+	for(auto chain : chains) {
+		delete chain;
+	}
+}
+
 // get the name of the player
 string Player::getName()
 {

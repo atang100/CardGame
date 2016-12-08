@@ -81,6 +81,8 @@ int main() {
 			ofs.open("save_data.txt", std::ofstream::out | std::ofstream::trunc); //clear text file
 			table->print(ofs);
 			ofs.close();
+			delete CardFactory::getFactory(); //destroy card factory
+			delete table; //destroy everything else
 			return 0;
 		}
 		else //actual game logic
@@ -313,4 +315,8 @@ int main() {
 	}else{
 		cout << winner << " won!" << endl;
 	}
+
+	delete CardFactory::getFactory(); //destroy card factory
+	delete table; //destroy everything else
+	return 0;
 }

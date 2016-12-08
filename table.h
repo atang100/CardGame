@@ -29,6 +29,8 @@ public:
 
 	Table(std::istream&, CardFactory*);
 
+	~Table();
+
 	//easier to loop through players as an array in main game loop
 	Player** getPlayers();
 

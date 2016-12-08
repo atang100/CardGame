@@ -3,6 +3,13 @@
 CardFactory* CardFactory::instance;
 vector<Card*> CardFactory::cards;
 
+//custom destructor, will destroy all cards
+CardFactory::~CardFactory() {
+	for(auto card : cards) {
+		delete card;
+	}
+}
+
 CardFactory* CardFactory::getFactory() {
 
 	if(instance == nullptr) {

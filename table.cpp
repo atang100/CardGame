@@ -71,6 +71,13 @@ Table::Table(std::istream& inputStream, CardFactory* cardFactory)
 	players[1] = player2;
 }
 
+Table::~Table() {
+	delete discardPile;
+	delete tradeArea;
+	delete player1;
+	delete player2;
+}
+
 Player** Table::getPlayers() {
 	return players;
 }

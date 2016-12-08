@@ -27,6 +27,8 @@ public:
 	Deck getDeck();
 
 	Card* getCard(string);
+
+	~CardFactory();
 };
 
 #endif

@@ -1,17 +1,13 @@
-Deck: A O Q T H H Q H H E M O R Q T M M Q H O A R M Q Q O H M M M H A Q T Q R T E Q H M R E T R R T Q A O R H O O Q M O E R T H M Q O O T Q H H Q H M T H R O O Q A H H T 
-Discard Pile: Q A O O M 
-Trade Area: A O R 
-Mr_luo
+Deck: A O Q T H H Q H H E M O R Q T M M Q H O A R M Q Q O H M M M H A Q T Q R T E Q H M R E T R R T Q A O R H O O Q M O E R T H M Q O O T Q H H Q H M T H R O O Q A H H T T Q R O A M A Q O A Q H 
+Discard Pile: 
+Trade Area: 
+a
 Coins: 0
 Max_Chains: 2
-Chains: 2
-Hematite H
-Emerald E
-Hand: M Q H Q A 
-Mr_tang
+Chains: 0
+Hand: H E O M Q 
+b
 Coins: 0
 Max_Chains: 2
-Chains: 2
-Malachite M
-Quartz Q
-Hand: O T E Q T 
+Chains: 0
+Hand: M Q O T E 

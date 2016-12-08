@@ -29,6 +29,8 @@ public:
 
 	Player(std::istream&, CardFactory*);
 
+	~Player();
+
 	// get the name of the player
 	string getName();
 

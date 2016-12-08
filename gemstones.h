@@ -29,6 +29,8 @@ public:
 	// returns full name of card.
 	virtual string getName() = 0;
 
+	virtual ~Card(){};
+
 protected:
 	virtual void print(std::ostream& out) const = 0;
 };
